@@ -6200,7 +6200,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><section class="row ng-scope">
 
                                         <h1>How to build your theme faster ? </h1>
@@ -6343,7 +6343,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><section class="row ng-scope">
                                         <div class="col-md-12">
                                             <h2>Clever context variables</h2>
@@ -6694,7 +6694,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><section class="row ng-scope">
                                         <div class="col-md-12">
                                             <h2>Bootstrap Magic <small> featuring Bootstrap 3, made with AngularJS</small></h2>
@@ -7222,7 +7222,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><!-- Typography
             ================================================== --><span class="ng-scope">
                                     </span><section name="typography" class="ng-scope">
@@ -7702,7 +7702,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><!-- Buttons
             ================================================== --><span class="ng-scope">
                                     </span><section name="buttons" class="ng-scope">
@@ -8220,7 +8220,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><section class="row ng-scope">
                                         <div class="col-md-12">
                                             <section class="row">
@@ -8569,7 +8569,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><span class="ng-scope">
                                     </span><!-- Forms
                                     ================================================== --><span class="ng-scope">
@@ -8845,7 +8845,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><!-- table
             ================================================== --><span class="ng-scope">
                                     </span><section name="table" class="ng-scope">
@@ -9422,7 +9422,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><!-- Navbar
             ================================================== --><span class="ng-scope">
                                     </span><section name="navbar" class="ng-scope">
@@ -9787,7 +9787,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><section class="row ng-scope">
                                         <div class="col-md-12">
                                             <div class="bs-example">
@@ -9918,7 +9918,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><section class="row ng-scope">
                                         <div class="col-md-12">
 
@@ -10329,7 +10329,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><section class="row ng-scope">
                                         <div class="col-md-12">
 
@@ -10676,7 +10676,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><span class="ng-scope">
                                     </span><!-- Alerts & Messages
                                     ================================================== --><span class="ng-scope">
@@ -10916,7 +10916,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><section class="row ng-scope">
                                         <h4>Photo booth beard raw denim</h4>
                                         <p>Tight pants next level keffiyeh <a href="" class="example" rel="tooltip" data-original-title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel have a <a href="" rel="tooltip" class="example" data-original-title="Another tooltip">terry</a> richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats.</p>
@@ -11158,7 +11158,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><section class="row ng-scope">
                                         <div class="col-md-12">
                                             <div>
@@ -11437,7 +11437,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><div class="row ng-scope">
                                         <div class="col-md-4">
                                             <ul class="list-group">
@@ -11542,7 +11542,7 @@ if (isset($_POST['reset_base'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 well">
                                 <div data-ng-include="" src="getGroupUrl()"><section class="row ng-scope">
                                         <div class="col-md-12">
                                             <h3>Icon Glyphs</h3>
