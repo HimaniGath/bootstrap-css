@@ -4,41 +4,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-// parse css file 
-
-/*$myfile = fopen("newfile.css", "r") or die("Unable to open file!");
-$myfile = fread($myfile, filesize("newfile.css"));
-//$file = readfile("newfile.css");
-
-
-$css_array = array(); // master array to hold all values
-// $element = explode('}', "newfile.css");
-
-
-$file = explode("{", file_get_contents("newfile.css"));
-$fileArray = array();
-$i = 0;
-foreach ($file as $element) {
-   
-    $fileArray[$i] = $element;
-    $i++;
-
-    //array_push($fileArray, $element);
-}
-
-
-print_r($fileArray);*/
-
-
-
 
 $myfile = fopen("newfile.css", "w") or die("Unable to open file!");
 $myLessfile = fopen("newlessfile.less", "w") or die("Unable to open file!");
 
+// get exixting css from newlessfile.less
 
-// Grays
-$gray_darker = $_REQUEST["gray-darker"];
-$gray_dark = $_REQUEST["gray-dark"]; 
+$gray_dark = $_REQUEST["gray-dark"];
 $gray = $_REQUEST["gray"];
 $gray_light = $_REQUEST["gray-light"];
 $gray_lighter = $_REQUEST["gray-lighter"];
@@ -46,152 +18,143 @@ $gray_lighter = $_REQUEST["gray-lighter"];
 
 
 // Brand Colors
-$brand_primary = $_REQUEST["brand-primary"]; 
-$brand_success = $_REQUEST["brand-success"]; 
-$brand_warning = $_REQUEST["brand-warning"]; 
-$brand_danger  = $_REQUEST["brand-danger"]; 
-$brand_info =$_REQUEST["brand-info"]; 
+$brand_primary = $_REQUEST["brand-primary"];
+$brand_success = $_REQUEST["brand-success"];
+$brand_warning = $_REQUEST["brand-warning"];
+$brand_danger = $_REQUEST["brand-danger"];
+$brand_info = $_REQUEST["brand-info"];
 
 
 // Scaffolding
 $bodyBg = $_REQUEST["body-bg"];
 
-$txcolor =$_REQUEST["text-color"]; 
+$txcolor = $_REQUEST["text-color"];
 $linkColor = $_REQUEST["link-color"];
-$linkhovercolor = $_REQUEST["link-hover-color"]; 
+$linkhovercolor = $_REQUEST["link-hover-color"];
 
-$pbv =$_REQUEST["padding-base-vertical"]; 
+$pbv = $_REQUEST["padding-base-vertical"];
 
-if(substr($pbv, 0,1)=== '@'){
+if (substr($pbv, 0, 1) === '@') {
     $whatIWant = substr($pbv, strpos($pbv, "@") + 1);
     //echo $whatIWant;
     //$actual_val = str_replace('-','_',$whatIWant);
-   // echo"Actual=====".$actual_val;
-    
-  $pbv =  $_REQUEST[$whatIWant];
-  echo $pbv;
-    
+    // echo"Actual=====".$actual_val;
+
+    $pbv = $_REQUEST[$whatIWant];
+    echo $pbv;
 }
 
 
 
-$padBH = $_REQUEST["padding-base-horizontal"]; 
+$padBH = $_REQUEST["padding-base-horizontal"];
 
 
-if(substr($padBH, 0,1)=== '@'){
+if (substr($padBH, 0, 1) === '@') {
     $whatIWant = substr($padBH, strpos($padBH, "@") + 1);
-   // echo $whatIWant;
+    // echo $whatIWant;
     //$actual_val = str_replace('-','_',$whatIWant);
-  // echo"Actual=====".$actual_val;
-    
-  $padBH =  $_REQUEST[$whatIWant];
- 
+    // echo"Actual=====".$actual_val;
+
+    $padBH = $_REQUEST[$whatIWant];
 }
 
 $pLV = $_REQUEST["padding-large-vertical"]; //10px;
 
-if(substr($pLV, 0,1)=== '@'){
+if (substr($pLV, 0, 1) === '@') {
     $whatIWant = substr($pLV, strpos($pLV, "@") + 1);
-   // echo $whatIWant;
+    // echo $whatIWant;
     //$actual_val = str_replace('-','_',$whatIWant);
-  // echo"Actual=====".$actual_val;
-    
-  $pLV =  $_REQUEST[$whatIWant];
- 
-}
-$pLH = $_REQUEST["padding-large-horizontal"];// 16px;
+    // echo"Actual=====".$actual_val;
 
-if(substr($pLH, 0,1)=== '@'){
+    $pLV = $_REQUEST[$whatIWant];
+}
+$pLH = $_REQUEST["padding-large-horizontal"]; // 16px;
+
+if (substr($pLH, 0, 1) === '@') {
     $whatIWant = substr($pLH, strpos($pLH, "@") + 1);
-   // echo $whatIWant;
+    // echo $whatIWant;
     //$actual_val = str_replace('-','_',$whatIWant);
-  // echo"Actual=====".$actual_val;
-    
-  $pLH =  $_REQUEST[$whatIWant];
- 
+    // echo"Actual=====".$actual_val;
+
+    $pLH = $_REQUEST[$whatIWant];
 }
 
-$pSV= $_REQUEST["padding-small-vertical"]; //5px;
+$pSV = $_REQUEST["padding-small-vertical"]; //5px;
 
-if(substr($pSV, 0,1)=== '@'){
+if (substr($pSV, 0, 1) === '@') {
     $whatIWant = substr($pSV, strpos($pSV, "@") + 1);
-   
-  $pSV =  $_REQUEST[$whatIWant];
- 
+
+    $pSV = $_REQUEST[$whatIWant];
 }
-$pSH= $_REQUEST["padding-small-horizontal"]; //10px;
-if(substr($pSH, 0,1)=== '@'){
+$pSH = $_REQUEST["padding-small-horizontal"]; //10px;
+if (substr($pSH, 0, 1) === '@') {
     $whatIWant = substr($pSH, strpos($pSH, "@") + 1);
-   
-  $pSH =  $_REQUEST[$whatIWant];
- 
+
+    $pSH = $_REQUEST[$whatIWant];
 }
 $bRB = $_REQUEST["border-radius-base"]; //4px;
 
 $bRL = $_REQUEST["border-radius-large"]; //6px;
-$bRS= $_REQUEST["border-radius-small"]; //3px;
+$bRS = $_REQUEST["border-radius-small"]; //3px;
 $lHL = $_REQUEST["line-height-large"]; //1.33;
 $lHS = $_REQUEST["line-height-small"]; //1.5;
 $cAB = $_REQUEST["component-active-bg"]; //$_REQUEST["brand-primary"];
-
-
-
 // Typography
 $fFSS = $_REQUEST["font-family-sans-serif"];
 $fFS = $_REQUEST["font-family-serif"];
 $fFM = $_REQUEST["font-family-monospace"];
-$fFB = $_REQUEST["font-family-base"]; 
+$fFB = $_REQUEST["font-family-base"];
 $fSB = $_REQUEST["font-size-base"];
 
 
 
-$fSL= $_REQUEST["font-size-large"];
+$fSL = $_REQUEST["font-size-large"];
 $fSS = $_REQUEST["font-size-small"];
 $fSH1 = $_REQUEST["font-size-h1"];
-$fSH2 = $_REQUEST["font-size-h2"]; 
-$fSH3 = $_REQUEST["font-size-h3"]; 
-$fSH4 = $_REQUEST["font-size-h4"]; 
-$fSH5 =$_REQUEST["font-size-h5"];
-$fSH6 =$_REQUEST["font-size-h6"];
+$fSH2 = $_REQUEST["font-size-h2"];
+$fSH3 = $_REQUEST["font-size-h3"];
+$fSH4 = $_REQUEST["font-size-h4"];
+$fSH5 = $_REQUEST["font-size-h5"];
+$fSH6 = $_REQUEST["font-size-h6"];
 $lHB = $_REQUEST["line-height-base"];
 $lHC = $_REQUEST["line-height-computed"];
-$hFF =$_REQUEST["headings-font-family"]; 
+$hFF = $_REQUEST["headings-font-family"];
 $hFW = $_REQUEST["headings-font-weight"];
 $hLH = $_REQUEST["headings-line-height"];
-$hC = $_REQUEST["headings-color"]; 
+$hC = $_REQUEST["headings-color"];
 
 
 // Buttons
-$bFW= $_REQUEST["btn-font-weight"];
+$bFW = $_REQUEST["btn-font-weight"];
 
 
-$bDC= $_REQUEST["btn-default-color"]; #333;
-$bDB =$_REQUEST["btn-default-bg"]; 
-$bDBB= $_REQUEST["btn-default-border"]; #ccc;
+$bDC = $_REQUEST["btn-default-color"]; #333;
+$bDB = $_REQUEST["btn-default-bg"];
+$bDBB = $_REQUEST["btn-default-border"]; #ccc;
 $bPC = $_REQUEST["btn-primary-color"];
 
 
 $bPB = $_REQUEST["btn-primary-bg"];
-$bPBB =$_REQUEST["btn-primary-border"]; 
+$bPBB = $_REQUEST["btn-primary-border"];
 $bSC = $_REQUEST["btn-success-color"];
-$bSB =$_REQUEST["btn-success-bg"]; 
-$bSBB =$_REQUEST["btn-success-border"];
+$bSB = $_REQUEST["btn-success-bg"];
+$bSBB = $_REQUEST["btn-success-border"];
 $bWC = $_REQUEST["btn-warning-color"];
-$bWB =$_REQUEST["btn-warning-bg"];
-$bWBb =$_REQUEST["btn-warning-border"];
+$bWB = $_REQUEST["btn-warning-bg"];
+$bWBb = $_REQUEST["btn-warning-border"];
 $bDCC = $_REQUEST["btn-danger-color"];
 $bDBBB = $_REQUEST["btn-danger-bg"];
-$bDBorder = $_REQUEST["btn-danger-border"]; 
-$bIC =$_REQUEST["btn-info-color"];
-$bIL = $_REQUEST["btn-info-bg"]; 
-$bII =$_REQUEST["btn-info-border"]; 
-$bIDC =$_REQUEST["btn-link-disabled-color"]; 
+$bDBorder = $_REQUEST["btn-danger-border"];
+$bIC = $_REQUEST["btn-info-color"];
+$bIL = $_REQUEST["btn-info-bg"];
+$bII = $_REQUEST["btn-info-border"];
+$bIDC = $_REQUEST["btn-link-disabled-color"];
 
 
 /*   START */
 // Dropdowns
-$Drop_Bg = $_REQUEST["dropdown-bg"]; 
-$Drop_Br =$_REQUEST["dropdown-border"];// rgba(0,0,0,.15);
+$Drop_Bg = $_REQUEST["dropdown-bg"];
+$Drop_Br = $_REQUEST["dropdown-border"]; // rgba(0,0,0,.15);
 $Drop_Di_Bg = $_REQUEST["dropdown-divider-bg"]; #e5e5e5;
 $Drop_Link_active = $_REQUEST["dropdown-link-active-color"]; //$bodyBg;
 $dropdown_link_active_bg = $_REQUEST["dropdown-link-active-bg"]; //$_REQUEST["component-active-bg"];
@@ -200,14 +163,11 @@ $dropdown_link_hover_color = $_REQUEST["dropdown-link-hover-color"]; // $bodyBg;
 $dropdown_link_hover_bg = $_REQUEST["dropdown-link-hover-bg"]; //$_REQUEST["dropdown-link-active-bg"];
 $dropdown_link_disabled_color = $_REQUEST["dropdown-link-disabled-color"]; //$_REQUEST["gray-light"];
 $dropdown_header_color = $_REQUEST["dropdown-header-color"]; //$_REQUEST["gray-light"];
-$dropdown_caret_color =$_REQUEST["dropdown-caret-color"]; #000;
-
-
-
+$dropdown_caret_color = $_REQUEST["dropdown-caret-color"]; #000;
 // Forms
 $input_bg = $_REQUEST["input-bg"];
 $input_bg_disabled = $_REQUEST["input-bg-disabled"]; //$_REQUEST["gray-lighter"];
-$input_color = $_REQUEST["input-color"];// $_REQUEST["gray"];
+$input_color = $_REQUEST["input-color"]; // $_REQUEST["gray"];
 $input_border = $_REQUEST["input-border"]; #ccc;
 $input_border_radius = $_REQUEST["input-border-radius"]; // $_REQUEST["border-radius-base"];
 $input_color_placeholder = $_REQUEST["input-color-placeholder"]; // $_REQUEST["gray-light"];
@@ -215,15 +175,11 @@ $input_height_base = $_REQUEST["input-height-base"]; //($_REQUEST["line-height-c
 $input_height_large = $_REQUEST["input-height-large"]; //(floor($_REQUEST["font-size-large"] * $_REQUEST["line-height-large"]) + ($_REQUEST["padding-large-vertical"] * 2) + 2);
 $input_height_small = $_REQUEST["input-height-small"]; //(floor($_REQUEST["font-size-small"] * $_REQUEST["line-height-small"]) + ($_REQUEST["padding-small-vertical"] * 2) + 2);
 $legend_color = $_REQUEST["legend-color"]; // $_REQUEST["gray-dark"];
-$legend_border_color =$_REQUEST["legend-border-color"]; #e5e5e5;
-$input_group_addon_bg =$_REQUEST["input-group-addon-bg"]; // $_REQUEST["gray-lighter"];
+$legend_border_color = $_REQUEST["legend-border-color"]; #e5e5e5;
+$input_group_addon_bg = $_REQUEST["input-group-addon-bg"]; // $_REQUEST["gray-lighter"];
 $input_group_addon_border_color = $_REQUEST["input-group-addon-border-color"]; //$_REQUEST["input-border"];
-
-
-
-
 // Table
-$table_cell_padding =$_REQUEST["table-cell-padding"]; //8px;
+$table_cell_padding = $_REQUEST["table-cell-padding"]; //8px;
 $table_condensed_cell_padding = $_REQUEST["table-condensed-cell-padding"]; //$pSV;
 $table_cell_padding = $_REQUEST["table-cell-padding"]; //8px;
 $table_condensed_cell_padding = $_REQUEST["table-condensed-cell-padding"]; //$pSV;
@@ -232,9 +188,6 @@ $table_bg_accent = $_REQUEST["table-bg-accent"]; #f9f9f9;
 $table_bg_hover = $_REQUEST["table-bg-hover"]; #f5f5f5;
 $table_bg_active = $_REQUEST["table-bg-active"]; //$_REQUEST["table-bg-hover"];
 $table_border_color = $_REQUEST["table-border-color"]; #ddd;
-
-
-
 // Navbar
 $navbar_height = $_REQUEST["navbar-height"]; //$navbar_height;
 $navbar_margin_bottom = $_REQUEST["navbar-margin-bottom"]; //$_REQUEST["line-height-computed"];
@@ -245,131 +198,119 @@ $navbar_border_radius = $_REQUEST["navbar-border-radius"];
 $navbar_padding_horizontal = $_REQUEST["navbar-padding-horizontal"]; //floor($_REQUEST["grid-gutter-width"] / 2);
 $navbar_padding_vertical = $_REQUEST["navbar-padding-vertical"]; //(($_REQUEST["navbar-height"] - $_REQUEST["line-height-computed"]) / 2);
 $navbar_default_link_color = $_REQUEST["navbar-default-link-color"]; #777;
-$navbar_default_link_hover_color =$_REQUEST["navbar-default-link-hover-color"]; #333;
+$navbar_default_link_hover_color = $_REQUEST["navbar-default-link-hover-color"]; #333;
 $navbar_default_link_hover_bg = $_REQUEST["navbar-default-link-hover-bg"]; // transparent;
-$navbar_default_link_active_color= $_REQUEST["navbar-default-link-active-color"];  #555;
-$navbar_default_link_active_bg= $_REQUEST["navbar-default-link-active-bg"]; //darken($_REQUEST["navbar-default-bg"], 6.5%);
+$navbar_default_link_active_color = $_REQUEST["navbar-default-link-active-color"];  #555;
+$navbar_default_link_active_bg = $_REQUEST["navbar-default-link-active-bg"]; //darken($_REQUEST["navbar-default-bg"], 6.5%);
 $navbar_default_link_disabled_color = $_REQUEST["navbar-default-link-disabled-color"];  #ccc;
 $navbar_default_link_disabled_bg = $_REQUEST["navbar-default-link-disabled-bg"]; //transparent;
 $navbar_default_brand_color = $_REQUEST["navbar-default-brand-color"]; //$_REQUEST["navbar-default-link-color"];
 $navbar_default_brand_hover_color = $_REQUEST["navbar-default-brand-hover-color"]; //darken($_REQUEST["navbar-default-link-color"], 10%);
 $navbar_default_brand_hover_bg = $_REQUEST["navbar-default-brand-hover-bg"]; //transparent;
-$navbar_default_toggle_hover_bg= $_REQUEST["navbar-default-toggle-hover-bg"]; #ddd;
-$navbar_default_toggle_icon_bar_bg= $_REQUEST["navbar-default-toggle-icon-bar-bg"]; #888;
-$navbar_default_toggle_border_color =$_REQUEST["navbar-default-toggle-border-color"]; #ddd;
-
-
+$navbar_default_toggle_hover_bg = $_REQUEST["navbar-default-toggle-hover-bg"]; #ddd;
+$navbar_default_toggle_icon_bar_bg = $_REQUEST["navbar-default-toggle-icon-bar-bg"]; #888;
+$navbar_default_toggle_border_color = $_REQUEST["navbar-default-toggle-border-color"]; #ddd;
 // TODO
-
 // Navs Tabs
 $nav_link_padding = $_REQUEST["nav-link-padding"]; //$pSH 15px;
-$nav_link_hover_bg =$_REQUEST["nav-link-hover-bg"]; //$_REQUEST["gray-lighter"];
+$nav_link_hover_bg = $_REQUEST["nav-link-hover-bg"]; //$_REQUEST["gray-lighter"];
 $nav_disabled_link_color = $_REQUEST["nav-disabled-link-color"]; //$_REQUEST["gray-light"];
-$nav_disabled_link_hover_color =$_REQUEST["nav-disabled-link-hover-color"]; //$_REQUEST["gray-light"];
-$nav_tabs_border_color =$_REQUEST["nav-tabs-border-color"]; #ddd;
-$nav_tabs_link_hover_border_color =$_REQUEST["nav-tabs-link-hover-border-color"]; //$_REQUEST["gray-lighter"];
+$nav_disabled_link_hover_color = $_REQUEST["nav-disabled-link-hover-color"]; //$_REQUEST["gray-light"];
+$nav_tabs_border_color = $_REQUEST["nav-tabs-border-color"]; #ddd;
+$nav_tabs_link_hover_border_color = $_REQUEST["nav-tabs-link-hover-border-color"]; //$_REQUEST["gray-lighter"];
 $nav_tabs_active_link_hover_bg = $_REQUEST["nav-tabs-active-link-hover-bg"]; //$_REQUEST["body-bg"];
-$nav_tabs_active_link_hover_color= $_REQUEST["nav-tabs-active-link-hover-color"]; //$_REQUEST["gray"];
+$nav_tabs_active_link_hover_color = $_REQUEST["nav-tabs-active-link-hover-color"]; //$_REQUEST["gray"];
 $nav_tabs_active_link_hover_border_color = $_REQUEST["nav-tabs-active-link-hover-border-color"]; #ddd;
-$nav_tabs_justified_link_border_color= $_REQUEST["nav-tabs-justified-link-border-color"]; #ddd;
+$nav_tabs_justified_link_border_color = $_REQUEST["nav-tabs-justified-link-border-color"]; #ddd;
 $nav_tabs_justified_active_link_border_color = $_REQUEST["nav-tabs-justified-active-link-border-color"]; //$_REQUEST["body-bg"];
-$nav_pills_border_radius =$_REQUEST["nav-pills-border-radius"]; //$_REQUEST["border-radius-base"];
+$nav_pills_border_radius = $_REQUEST["nav-pills-border-radius"]; //$_REQUEST["border-radius-base"];
 $nav_pills_active_link_hover_bg = $_REQUEST["nav-pills-active-link-hover-bg"]; //$_REQUEST["component-active-bg"];
-$nav_pills_active_link_hover_color= $_REQUEST["nav-pills-active-link-hover-color"]; //$bodyBg;
-
-
-
+$nav_pills_active_link_hover_color = $_REQUEST["nav-pills-active-link-hover-color"]; //$bodyBg;
 // DONE ++++++++++++++
 // Jumbotron
-$jumbotron_padding= $_REQUEST["jumbotron-padding"]; //30px;
-$jumbotron_color =$_REQUEST["jumbotron-color"]; //inherit;
-$jumbotron_bg =$_REQUEST["jumbotron-bg"]; //$_REQUEST["gray-lighter"];
-$jumbotron_font_size =$_REQUEST["jumbotron-font-size"]; //ceil(($_REQUEST["font-size-base"] *  $lHS));
-
+$jumbotron_padding = $_REQUEST["jumbotron-padding"]; //30px;
+$jumbotron_color = $_REQUEST["jumbotron-color"]; //inherit;
+$jumbotron_bg = $_REQUEST["jumbotron-bg"]; //$_REQUEST["gray-lighter"];
+$jumbotron_font_size = $_REQUEST["jumbotron-font-size"]; //ceil(($_REQUEST["font-size-base"] *  $lHS));
 // TODO ++++++++++++++++
-
-
 // Pagination
-$pagination_bg =$_REQUEST["pagination-bg"]; $bodyBg;
-$pagination_border =$_REQUEST["pagination-border"]; #ddd;
-$pagination_hover_bg =$_REQUEST["pagination-hover-bg"]; //$_REQUEST["gray-lighter"];
-$pagination_hover_color =$_REQUEST["pagination-hover-color"]; //$_REQUEST["link-hover-color"];
+$pagination_bg = $_REQUEST["pagination-bg"];
+$bodyBg;
+$pagination_border = $_REQUEST["pagination-border"]; #ddd;
+$pagination_hover_bg = $_REQUEST["pagination-hover-bg"]; //$_REQUEST["gray-lighter"];
+$pagination_hover_color = $_REQUEST["pagination-hover-color"]; //$_REQUEST["link-hover-color"];
 $pagination_hover_border = $_REQUEST["pagination-hover-border"]; #ddd;
-$pagination_active_bg =$_REQUEST["pagination-active-bg"]; //$_REQUEST["brand-primary"];
-$pagination_active_color =$_REQUEST["pagination-active-color"]; //$bodyBg;
+$pagination_active_bg = $_REQUEST["pagination-active-bg"]; //$_REQUEST["brand-primary"];
+$pagination_active_color = $_REQUEST["pagination-active-color"]; //$bodyBg;
 $pagination_active_border = $_REQUEST["pagination-active-border"]; //$_REQUEST["brand-primary"];
-$pagination_disabled_color =$_REQUEST["pagination-disabled-color"]; //$_REQUEST["gray-light"];
-$pagination_disabled_bg =$_REQUEST["pagination-disabled-bg"]; //$bodyBg;
-$pagination_disabled_border =$_REQUEST["pagination-disabled-border"]; #ddd;
-$pager_bg =$_REQUEST["pager-bg"]; //$_REQUEST["pagination-bg"];
-$pager_border =$_REQUEST["pager-border"]; // $_REQUEST["pagination-border"];
-$pager_border_radius =$_REQUEST["pager-border-radius"]; //15px;
-$pager_hover_bg =$_REQUEST["pager-hover-bg"]; ////$_REQUEST["pagination-hover-bg"];
-$pager_active_bg =$_REQUEST["pager-active-bg"]; //$_REQUEST["pagination-active-bg"];
-$pager_active_color =$_REQUEST["pager-active-color"];// $_REQUEST["pagination-active-color"];
-$pager_bg =$_REQUEST["pager-bg"]; //$_REQUEST["pagination-bg"];
-$pager_disabled_color =$_REQUEST["pager-disabled-color"];// $_REQUEST["gray-light"];
-
-
+$pagination_disabled_color = $_REQUEST["pagination-disabled-color"]; //$_REQUEST["gray-light"];
+$pagination_disabled_bg = $_REQUEST["pagination-disabled-bg"]; //$bodyBg;
+$pagination_disabled_border = $_REQUEST["pagination-disabled-border"]; #ddd;
+$pager_bg = $_REQUEST["pager-bg"]; //$_REQUEST["pagination-bg"];
+$pager_border = $_REQUEST["pager-border"]; // $_REQUEST["pagination-border"];
+$pager_border_radius = $_REQUEST["pager-border-radius"]; //15px;
+$pager_hover_bg = $_REQUEST["pager-hover-bg"]; ////$_REQUEST["pagination-hover-bg"];
+$pager_active_bg = $_REQUEST["pager-active-bg"]; //$_REQUEST["pagination-active-bg"];
+$pager_active_color = $_REQUEST["pager-active-color"]; // $_REQUEST["pagination-active-color"];
+$pager_bg = $_REQUEST["pager-bg"]; //$_REQUEST["pagination-bg"];
+$pager_disabled_color = $_REQUEST["pager-disabled-color"]; // $_REQUEST["gray-light"];
 // DONE
 // Form States
-$state_warning_text =$_REQUEST["state-warning-text"]; #c09853;
-$state_warning_bg =$_REQUEST["state-warning-bg"]; #fcf8e3;
-$state_warning_border =$_REQUEST["state-warning-border"]; //darken(spin($_REQUEST["state-warning-bg"], -10), 3%);
-$state_danger_text =$_REQUEST["state-danger-text"]; $state_danger_text;
-$state_danger_bg =$_REQUEST["state-danger-bg"]; $state_danger_bg;
-$state_danger_border =$_REQUEST["state-danger-border"]; //darken(spin($_REQUEST["state-danger-bg"], -10), 3%);
-$state_success_text =$_REQUEST["state-success-text"]; $state_success_text;
-$state_success_bg =$_REQUEST["state-success-bg"]; $state_success_bg;
-$state_success_border =$_REQUEST["state-success-border"]; //darken(spin($_REQUEST["state-success-bg"], -10), 5%);
-$state_info_text =$_REQUEST["state-info-text"]; $state_info_text;
-$state_info_bg =$_REQUEST["state-info-bg"]; $state_info_bg;
-$state_info_border= $_REQUEST["state-info-border"]; //darken(spin($_REQUEST["state-info-bg"], -10), 7%);
-
-
-
+$state_warning_text = $_REQUEST["state-warning-text"]; #c09853;
+$state_warning_bg = $_REQUEST["state-warning-bg"]; #fcf8e3;
+$state_warning_border = $_REQUEST["state-warning-border"]; //darken(spin($_REQUEST["state-warning-bg"], -10), 3%);
+$state_danger_text = $_REQUEST["state-danger-text"];
+$state_danger_text;
+$state_danger_bg = $_REQUEST["state-danger-bg"];
+$state_danger_bg;
+$state_danger_border = $_REQUEST["state-danger-border"]; //darken(spin($_REQUEST["state-danger-bg"], -10), 3%);
+$state_success_text = $_REQUEST["state-success-text"];
+$state_success_text;
+$state_success_bg = $_REQUEST["state-success-bg"];
+$state_success_bg;
+$state_success_border = $_REQUEST["state-success-border"]; //darken(spin($_REQUEST["state-success-bg"], -10), 5%);
+$state_info_text = $_REQUEST["state-info-text"];
+$state_info_text;
+$state_info_bg = $_REQUEST["state-info-bg"];
+$state_info_bg;
+$state_info_border = $_REQUEST["state-info-border"]; //darken(spin($_REQUEST["state-info-bg"], -10), 7%);
 // ToolTip
-$tooltip_max_width =$_REQUEST["tooltip-max-width"]; //200px;
-$tooltip_color =$_REQUEST["tooltip-color"]; //$bodyBg;
-$tooltip_bg =$_REQUEST["tooltip-bg"]; #000;
-$tooltip_arrow_width =$_REQUEST["tooltip-arrow-width"]; //$pSV;
-$tooltip_arrow_color =$_REQUEST["tooltip-arrow-color"]; //$_REQUEST["tooltip-bg"];
-$tooltip_opacity =$_REQUEST["tooltip-opacity"]; //.9;
-
-
+$tooltip_max_width = $_REQUEST["tooltip-max-width"]; //200px;
+$tooltip_color = $_REQUEST["tooltip-color"]; //$bodyBg;
+$tooltip_bg = $_REQUEST["tooltip-bg"]; #000;
+$tooltip_arrow_width = $_REQUEST["tooltip-arrow-width"]; //$pSV;
+$tooltip_arrow_color = $_REQUEST["tooltip-arrow-color"]; //$_REQUEST["tooltip-bg"];
+$tooltip_opacity = $_REQUEST["tooltip-opacity"]; //.9;
 // Popover
-$popover_bg =$_REQUEST["popover-bg"]; //$bodyBg;
-$popover_max_width =$_REQUEST["popover-max-width"]; //276px;
-$popover_border_color =$_REQUEST["popover-border-color"]; //rgba(0,0,0,.2);
-$popover_fallback_border_color =$_REQUEST["popover-fallback-border-color"]; #ccc;
-$popover_title_bg =$_REQUEST["popover-title-bg"]; //darken($_REQUEST["popover-bg"], 3%);
-$popover_arrow_width =$_REQUEST["popover-arrow-width"]; //$pSH;
-$popover_arrow_color =$_REQUEST["popover-arrow-color"]; //$bodyBg;
-$popover_arrow_outer_width =$_REQUEST["popover-arrow-outer-width"]; //($_REQUEST["popover-arrow-width"] + 1);
-$popover_arrow_outer_color =$_REQUEST["popover-arrow-outer-color"]; //rgba(0,0,0,.25);
-$popover_arrow_outer_fallback_color =$_REQUEST["popover-arrow-outer-fallback-color"]; #999;
-
+$popover_bg = $_REQUEST["popover-bg"]; //$bodyBg;
+$popover_max_width = $_REQUEST["popover-max-width"]; //276px;
+$popover_border_color = $_REQUEST["popover-border-color"]; //rgba(0,0,0,.2);
+$popover_fallback_border_color = $_REQUEST["popover-fallback-border-color"]; #ccc;
+$popover_title_bg = $_REQUEST["popover-title-bg"]; //darken($_REQUEST["popover-bg"], 3%);
+$popover_arrow_width = $_REQUEST["popover-arrow-width"]; //$pSH;
+$popover_arrow_color = $_REQUEST["popover-arrow-color"]; //$bodyBg;
+$popover_arrow_outer_width = $_REQUEST["popover-arrow-outer-width"]; //($_REQUEST["popover-arrow-width"] + 1);
+$popover_arrow_outer_color = $_REQUEST["popover-arrow-outer-color"]; //rgba(0,0,0,.25);
+$popover_arrow_outer_fallback_color = $_REQUEST["popover-arrow-outer-fallback-color"]; #999;
 //
 // List Group
-$list_group_bg =$_REQUEST["list-group-bg"]; //$bodyBg;
-$list_group_border =$_REQUEST["list-group-border"]; #ddd;
-$list_group_border_radius =$_REQUEST["list-group-border-radius"]; //$_REQUEST["border-radius-base"];
-$list_group_hover_bg =$_REQUEST["list-group-hover-bg"]; #f5f5f5;
-$list_group_active_color =$_REQUEST["list-group-active-color"]; //$bodyBg;
-$list_group_active_bg= $_REQUEST["list-group-active-bg"]; //$_REQUEST["component-active-bg"];
-$list_group_active_border =$_REQUEST["list-group-active-border"]; //$_REQUEST["list-group-active-bg"];
-$list_group_active_text_color =$_REQUEST["list-group-active-text-color"]; //lighten($_REQUEST["list-group-active-bg"], 40%);
-$list_group_link_color =$_REQUEST["list-group-link-color"]; #555;
-$list_group_link_heading_color =$_REQUEST["list-group-link-heading-color"]; #333;
-
-
+$list_group_bg = $_REQUEST["list-group-bg"]; //$bodyBg;
+$list_group_border = $_REQUEST["list-group-border"]; #ddd;
+$list_group_border_radius = $_REQUEST["list-group-border-radius"]; //$_REQUEST["border-radius-base"];
+$list_group_hover_bg = $_REQUEST["list-group-hover-bg"]; #f5f5f5;
+$list_group_active_color = $_REQUEST["list-group-active-color"]; //$bodyBg;
+$list_group_active_bg = $_REQUEST["list-group-active-bg"]; //$_REQUEST["component-active-bg"];
+$list_group_active_border = $_REQUEST["list-group-active-border"]; //$_REQUEST["list-group-active-bg"];
+$list_group_active_text_color = $_REQUEST["list-group-active-text-color"]; //lighten($_REQUEST["list-group-active-bg"], 40%);
+$list_group_link_color = $_REQUEST["list-group-link-color"]; #555;
+$list_group_link_heading_color = $_REQUEST["list-group-link-heading-color"]; #333;
 // Sprites
-$icon_font_path =$_REQUEST["icon-font-path"];  //"../app/fonts/";
+$icon_font_path = $_REQUEST["icon-font-path"];  //"../app/fonts/";
 $icon_font_name = $_REQUEST["icon-font-name"]; //glyphicons-halflings-regular;
-
+// Modify files if submit
 // Generate Less file
 
-$lessVariable = "
+$lessVal = "
 // Grays
 @gray-darker: $gray_darker;
 @gray-dark: $gray_dark;
@@ -615,327 +556,259 @@ $lessVariable = "
 @icon-font-path: $icon_font_path;
 @icon-font-name: $icon_font_name;
 
+   ";
 
-// Private
-@zindex-navbar: 1000;
-@zindex-dropdown: 1000;
-@zindex-popover: 1010;
-@zindex-tooltip: 1030;
-@zindex-navbar-fixed: 1030;
-@zindex-modal-background: 1040;
-@zindex-modal: 1050;
-@screen-xs: 480px;
-@screen-xs-min: @screen-xs;
-@screen-phone: @screen-xs-min;
-@screen-sm: 768px;
-@screen-sm-min: @screen-sm;
-@screen-tablet: @screen-sm-min;
-@screen-md: 992px;
-@screen-desktop-min: @screen-md;
-@screen-desktop: @screen-md-min;
-@screen-lg: 1200px;
-@screen-lg-desktop-min: @screen-lg;
-@screen-lg-desktop: @screen-lg-min;
-@screen-xs-max: (@screen-sm - 1);
-@screen-sm-max: (@screen-md - 1);
-@screen-md-max: (@screen-lg - 1);
-@grid-columns: 12;
-@grid-gutter-width: 30px;
-@grid-float-breakpoint: @screen-tablet;
-@navbar-collapse-max-height: 340px;
-@navbar-inverse-color: @gray-light;
-@navbar-inverse-bg: #222;
-@navbar-inverse-border: darken(@navbar-inverse-bg, 10%);
-@navbar-inverse-link-color: @gray-light;
-@navbar-inverse-link-hover-color: #fff;
-@navbar-inverse-link-hover-bg: transparent;
-@navbar-inverse-link-active-color: @navbar-inverse-link-hover-color;
-@navbar-inverse-link-active-bg: darken(@navbar-inverse-bg, 10%);
-@navbar-inverse-link-disabled-color: #444;
-@navbar-inverse-link-disabled-bg: transparent;
-@navbar-inverse-brand-color: @navbar-inverse-link-color;
-@navbar-inverse-brand-hover-color: #fff;
-@navbar-inverse-brand-hover-bg: transparent;
-@navbar-inverse-toggle-hover-bg: #333;
-@navbar-inverse-toggle-icon-bar-bg: #fff;
-@navbar-inverse-toggle-border-color: #333;
-@pager-border-radius: 15px;
-@pager-disabled-color: @gray-light;
-@modal-inner-padding: 20px;
-@modal-title-padding: 15px;
-@modal-title-line-height: @line-height-base;
-@modal-content-bg: #fff;
-@modal-content-border-color: rgba(0,0,0,.2);
-@modal-content-fallback-border-color: #999;
-@modal-backdrop-bg: #000;
-@modal-header-border-color: #e5e5e5;
-@modal-footer-border-color: @modal-header-border-color;
-@alert-padding: 15px;
-@alert-border-radius: @border-radius-base;
-@alert-link-font-weight: bold;
-@alert-success-bg: @state-success-bg;
-@alert-success-text: @state-success-text;
-@alert-success-border: @state-success-border;
-@alert-info-bg: @state-info-bg;
-@alert-info-text: @state-info-text;
-@alert-info-border: @state-info-border;
-@alert-warning-bg: @state-warning-bg;
-@alert-warning-text: @state-warning-text;
-@alert-warning-border: @state-warning-border;
-@alert-danger-bg: @state-danger-bg;
-@alert-danger-text: @state-danger-text;
-@alert-danger-border: @state-danger-border;
-@progress-bg: #f5f5f5;
-@progress-bar-color: #fff;
-@progress-bar-bg:  @brand-primary;
-@progress-bar-success-bg: @brand-success;
-@progress-bar-warning-bg: @brand-warning;
-@progress-bar-danger-bg: @brand-danger;
-@progress-bar-info-bg: @brand-info;
-@panel-bg: #fff;
-@panel-inner-border: #ddd;
-@panel-border-radius: @border-radius-base;
-@panel-footer-bg: #f5f5f5;
-@panel-body-padding: 15px;
-@panel-default-text: @gray-dark;
-@panel-default-border: #ddd;
-@panel-default-heading-bg: #f5f5f5;
-@panel-primary-text: #fff;
-@panel-primary-border: @brand-primary;
-@panel-primary-heading-bg: @brand-primary;
-@panel-success-text: @state-success-text;
-@panel-success-border: @state-success-border;
-@panel-success-heading-bg: @state-success-bg;
-@panel-warning-text: @state-warning-text;
-@panel-warning-border: @state-warning-border;
-@panel-warning-heading-bg: @state-warning-bg;
-@panel-danger-text: @state-danger-text;
-@panel-danger-border: @state-danger-border;
-@panel-danger-heading-bg: @state-danger-bg;
-@panel-info-text: @state-info-text;
-@panel-info-border: @state-info-border;
-@panel-info-heading-bg: @state-info-bg;
-@thumbnail-padding: 4px;
-@thumbnail-bg: @body-bg;
-@thumbnail-border: #ddd;
-@thumbnail-border-radius: @border-radius-base;
-@thumbnail-caption-color: @text-color;
-@thumbnail-caption-padding: 9px;
-@well-bg: #f5f5f5;
-@well-border:  darken(@well-bg, 7%);
-@badge-color:: #fff;
-@badge-link-hover-color: #fff;
-@badge-bg: @gray-light;
-@badge-active-color: @link-color;
-@badge-active-bg: #fff;
-@badge-font-weight: bold;
-@badge-line-height: 1;
-@badge-border-radius: 10px;
-@breadcrumb-padding-vertical: 8px;
-@breadcrumb-padding-horizontal: 15px;
-@breadcrumb-bg: #f5f5f5;
-@breadcrumb-color: #ccc;
-@breadcrumb-active-color: @gray-light;
-@breadcrumb-separator: ;
-@carousel-text-shadow: 0 1px 2px rgba(0,0,0,.6);
-@carousel-control-color: #fff;
-@carousel-control-width: 15%;
-@carousel-control-opacity: .5;
-@carousel-control-font-size: 20px;
-@carousel-indicator-active-bg: #fff;
-@carousel-indicator-border-color: #fff;
-@carousel-caption-color: #fff;
-@close-color: #000;
-@close-font-weight: bold;
-@close-text-shadow: 0 1px 0 #fff;
-@code-color: #c7254e;
-@code-bg: #f9f2f4;
-@kbd-color: #fff;
-@kbd-bg: #333;
-@pre-bg: #f5f5f5;
-@pre-color: @gray-dark;
-@pre-border-color: #ccc;
-@pre-scrollable-max-height: 340px;
-@text-muted: @gray-light;
-@abbr-border-color: @gray-light;
-@headings-small-color: @gray-light;
-@blockquote-small-color: @gray-light;
-@blockquote-border-color: @gray-lighter;
-@page-header-border-color: @gray-lighter;
-@hr-border: @gray-lighter;
-@component-offset-horizontal: 180px;
-@container-tablet: ((720px + @grid-gutter-width));
-@container-desktop: ((940px + @grid-gutter-width));
-@container-lg-desktop: ((1140px + @grid-gutter-width));
-@container-sm: @container-tablet;
-@container-md: @container-desktop;
-@container-lg: @container-large-desktop;
+
+// Add to text file
+
+$txtVariable = "
+// Grays
+@gray-darker: $gray_darker;
+@gray-dark: $gray_dark;
+@gray: $gray;
+@gray-light: $gray_light;
+@gray-lighter:$gray_lighter;
+
+
+// Brand Colors
+@brand-primary: $brand_primary;
+@brand-success: $brand_success;
+@brand-warning: $brand_warning;
+@brand-danger: $brand_danger;
+@brand-info: $brand_info;
+
+
+// Scaffolding
+@body-bg: $bodyBg;
+@text-color: $txcolor;
+@link-color: $linkcolor;
+@link-hover-color: $linkhovercolor;
+@padding-base-vertical: $pbv;
+@padding-base-horizontal: $padBH;
+@padding-large-vertical: $pLV;
+@padding-large-horizontal: $pLH;
+@padding-small-vertical: $pSV;
+@padding-small-horizontal: $pSH;
+@border-radius-base: $bRB;
+@border-radius-large: $bRL;
+@border-radius-small: $bRS;
+@line-height-large: $lHL;
+@line-height-small: $lHS;
+@component-active-bg: $cAB;
+
+
+// Typography
+@font-family-sans-serif: $fFSS;
+@font-family-serif: $fFS;
+@font-family-monospace: $fFM;
+@font-family-base: $fFB;
+@font-size-base: $fSB;
+@font-size-large: $fSL;
+@font-size-small: $fSS;
+@font-size-h1: $fSH1;
+@font-size-h2:$fSH2;
+@font-size-h3: $fSH3;
+@font-size-h4:$fSH4;
+@font-size-h5: $fSH5;
+@font-size-h6: $fSH6;
+@line-height-base: $lHB;
+@line-height-computed: $lHC;
+@headings-font-family:$hFF;
+@headings-font-weight: $hFW;
+@headings-line-height: $hLH;
+@headings-color: $hC;
+
+
+// Buttons
+@btn-font-weight: $bFW;
+@btn-default-color: $bDC;
+@btn-default-bg: $bDB;
+@btn-default-border: $bDBB;
+@btn-primary-color: $bPC;
+@btn-primary-bg: $bPB;
+@btn-primary-border: $bPBB;
+@btn-success-color: $bSC;
+@btn-success-bg: $bSB;
+@btn-success-border: $bSBB;
+@btn-warning-color: $bWC;
+@btn-warning-bg: $bWB;
+@btn-warning-border: $bWBb;
+@btn-danger-color: $bDCC;
+@btn-danger-bg:$bDBBB;
+@btn-danger-border: $bDBorder;
+@btn-info-color: $bIC;
+@btn-info-bg: $bIL;
+@btn-info-border: $bII;
+@btn-link-disabled-color: $bIDC;
+
+
+// Dropdowns
+@dropdown-bg: $Drop_Bg;
+@dropdown-border: $Drop_Br;
+@dropdown-divider-bg: $Drop_Di_Bg;
+@dropdown-link-active-color: $Drop_Link_active;
+@dropdown-link-active-bg: $dropdown_link_active_bg;
+@dropdown-link-color: $dropdown_link_color;
+@dropdown-link-hover-color: $dropdown_link_hover_color;
+@dropdown-link-hover-bg: $dropdown_link_hover_bg;
+@dropdown-link-disabled-color: $dropdown_link_disabled_color;
+@dropdown-header-color: $dropdown_header_color;
+@dropdown-caret-color: $dropdown_caret_color;
+
+
+// Forms
+@input-bg: $input_bg;
+@input-bg-disabled: $input_bg_disabled;
+@input-color: $input_color;
+@input-border: $input_border;
+@input-border-radius: $input_border_radius;
+@input-color-placeholder: $input_color_placeholder;
+@input-height-base: $input_height_base;
+@input-height-large: $input_height_large;
+@input-height-small: $input_height_small;
+@legend-color: $legend_color;
+@legend-border-color: $legend_border_color;
+@input-group-addon-bg: $input_group_addon_bg;
+@input-group-addon-border-color: $input_group_addon_border_color;
+
+
+// Table
+@table-cell-padding: $table_cell_padding;
+@table-condensed-cell-padding: $table_condensed_cell_padding;
+@table-cell-padding: $table_cell_padding;
+@table-condensed-cell-padding: $table_condensed_cell_padding;
+@table-bg: $table_bg;
+@table-bg-accent: $table_bg_accent;
+@table-bg-hover: $table_bg_hover;
+@table-bg-active: $table_bg_active;
+@table-border-color: $table_border_color;
+
+
+// Navbar
+@navbar-height: $navbar_height;
+@navbar-margin-bottom: $navbar_margin_bottom;
+@navbar-default-color: $navbar_default_color;
+@navbar-default-bg: $navbar_default_bg;
+@navbar-default-border:$navbar_default_border;
+@navbar-border-radius: $navbar_border_radius;
+@navbar-padding-horizontal: $navbar_padding_horizontal;
+@navbar-padding-vertical: $navbar_padding_vertical;
+@navbar-default-link-color: $navbar_default_link_color;
+@navbar-default-link-hover-color: $navbar_default_link_hover_color;
+@navbar-default-link-hover-bg: $navbar_default_link_hover_bg;
+@navbar-default-link-active-color:  $navbar_default_link_active_color;
+@navbar-default-link-active-bg: $navbar_default_link_active_bg;
+@navbar-default-link-disabled-color:  $navbar_default_link_disabled_color;
+@navbar-default-link-disabled-bg: $navbar_default_link_disabled_bg;
+@navbar-default-brand-color:$navbar_default_brand_color;
+@navbar-default-brand-hover-color: $navbar_default_brand_hover_color;
+@navbar-default-brand-hover-bg: $navbar_default_brand_hover_bg;
+@navbar-default-toggle-hover-bg: $navbar_default_toggle_hover_bg;
+@navbar-default-toggle-icon-bar-bg: $navbar_default_toggle_icon_bar_bg;
+@navbar-default-toggle-border-color: $navbar_default_toggle_border_color;
+
+
+// Navs Tabs
+@nav-link-padding: $nav_link_padding;
+@nav-link-hover-bg: $nav_link_hover_bg;
+@nav-disabled-link-color: $nav_disabled_link_color;
+@nav-disabled-link-hover-color: $nav_disabled_link_hover_color;
+@nav-tabs-border-color: $nav_tabs_border_color;
+@nav-tabs-link-hover-border-color: $nav_tabs_link_hover_border_color;
+@nav-tabs-active-link-hover-bg: $nav_tabs_active_link_hover_bg;
+@nav-tabs-active-link-hover-color: $nav_tabs_active_link_hover_color;
+@nav-tabs-active-link-hover-border-color: $nav_tabs_active_link_hover_border_color;
+@nav-tabs-justified-link-border-color: $nav_tabs_justified_link_border_color;
+@nav-tabs-justified-active-link-border-color:$nav_tabs_justified_active_link_border_color;
+@nav-pills-border-radius: $nav_pills_border_radius;
+@nav-pills-active-link-hover-bg: $nav_pills_active_link_hover_bg;
+@nav-pills-active-link-hover-color: $nav_pills_active_link_hover_color;
+
+
+// Jumbotron
+@jumbotron-padding: $jumbotron_padding;
+@jumbotron-color: $jumbotron_color;
+@jumbotron-bg: $jumbotron_bg;
+@jumbotron-font-size: $jumbotron_font_size;
+
+
+// Pagination
+@pagination-bg: $pagination_bg;
+@pagination-border: $pagination_border;
+@pagination-hover-bg: $pagination_hover_bg;
+@pagination-hover-color: $pagination_hover_color;
+@pagination-hover-border: $pagination_hover_border;
+@pagination-active-bg: $pagination_active_bg;
+@pagination-active-color: $pagination_active_color;
+@pagination-active-border: $pagination_active_border;
+@pagination-disabled-color: $pagination_disabled_color;
+@pagination-disabled-bg: $pagination_disabled_bg;
+@pagination-disabled-border: $pagination_disabled_border;
+@pager-bg: $pager_bg;
+@pager-border: $pager_border;
+@pager-border-radius: $pager_border_radius;
+@pager-hover-bg: $pager_hover_bg;
+@pager-active-bg: $pager_active_bg;
+@pager-active-color:$pager_active_color ;
+@pager-bg: $pager_bg;
+@pager-disabled-color: $pager_disabled_color;
+
+
+// Form States
+@state-warning-text: $state_warning_text;
+@state-warning-bg: $state_warning_bg;
+@state-warning-border: $state_warning_border;
+@state-danger-text: $state_danger_text;
+@state-danger-bg: $state_danger_bg;
+@state-danger-border: $state_danger_border;
+@state-success-text: $state_success_text
+@state-success-bg: $state_success_bg
+@state-success-border:$state_success_border;
+@state-info-text: $state_info_text;
+@state-info-bg: $state_info_bg;
+@state-info-border: $state_info_border;
+
+// ToolTip
+@tooltip-max-width: $tooltip_max_width;
+@tooltip-color: $tooltip_color;
+@tooltip-bg: $tooltip_bg;
+@tooltip-arrow-width: $tooltip_arrow_width;
+@tooltip-arrow-color: $tooltip_arrow_color;
+@tooltip-opacity: $tooltip_opacity;
+
+
+// Popover
+@popover-bg: $popover_bg;
+@popover-max-width: $popover_max_width;
+@popover-border-color: $popover_border_color;
+@popover-fallback-border-color: $popover_fallback_border_color;
+@popover-title-bg: $popover_title_bg;
+@popover-arrow-width: $popover_arrow_width;
+@popover-arrow-color: $popover_arrow_color;
+@popover-arrow-outer-width: $popover_arrow_outer_width;
+@popover-arrow-outer-color: $popover_arrow_outer_color;
+@popover-arrow-outer-fallback-color: $popover_arrow_outer_fallback_color;
+
+
+// List Group
+@list-group-bg: $list_group_bg;
+@list-group-border: $list_group_border;
+@list-group-border-radius: $list_group_border_radius;
+@list-group-hover-bg: $list_group_hover_bg;
+@list-group-active-color: $list_group_active_color;
+@list-group-active-bg: $list_group_active_bg;
+@list-group-active-border: $list_group_active_border;
+@list-group-active-text-color: $list_group_active_text_color;
+@list-group-link-color: $list_group_link_color;
+@list-group-link-heading-color: $list_group_link_heading_color;
+
+@icon-font-path: $icon_font_path;
+@icon-font-name: $icon_font_name;
    ";
 
 
 
-
-
-/*
-
-// Private
-$_REQUEST["zindex-navbar"]; 1000;
-$_REQUEST["zindex-dropdown"]; 1000;
-$_REQUEST["zindex-popover"]; 1010;
-$_REQUEST["zindex-tooltip"]; 1030;
-$_REQUEST["zindex-navbar-fixed"]; 1030;
-$_REQUEST["zindex-modal-background"]; 1040;
-$_REQUEST["zindex-modal"]; 1050;
-$_REQUEST["screen-xs"]; 480px;
-$_REQUEST["screen-xs-min"]; $_REQUEST["screen-xs"];
-$_REQUEST["screen-phone"]; $_REQUEST["screen-xs-min"];
-$_REQUEST["screen-sm"]; 768px;
-$_REQUEST["screen-sm-min"]; $_REQUEST["screen-sm"];
-$_REQUEST["screen-tablet"]; $_REQUEST["screen-sm-min"];
-$_REQUEST["screen-md"]; 992px;
-$_REQUEST["screen-desktop-min"]; $_REQUEST["screen-md"];
-$_REQUEST["screen-desktop"]; $_REQUEST["screen-md-min"];
-$_REQUEST["screen-lg"]; 1200px;
-$_REQUEST["screen-lg-desktop-min"]; $_REQUEST["screen-lg"];
-$_REQUEST["screen-lg-desktop"]; $_REQUEST["screen-lg-min"];
-$_REQUEST["screen-xs-max"]; ($_REQUEST["screen-sm"] - 1);
-$_REQUEST["screen-sm-max"]; ($_REQUEST["screen-md"] - 1);
-$_REQUEST["screen-md-max"]; ($_REQUEST["screen-lg"] - 1);
-$_REQUEST["grid-columns"]; 12;
-$_REQUEST["grid-gutter-width"]; 30px;
-$_REQUEST["grid-float-breakpoint"]; $_REQUEST["screen-tablet"];
-$_REQUEST["navbar-collapse-max-height"]; 340px;
-$_REQUEST["navbar-inverse-color"]; $_REQUEST["gray-light"];
-$_REQUEST["navbar-inverse-bg"]; #222;
-$_REQUEST["navbar-inverse-border"]; darken($_REQUEST["navbar-inverse-bg"], 10%);
-$_REQUEST["navbar-inverse-link-color"]; $_REQUEST["gray-light"];
-$_REQUEST["navbar-inverse-link-hover-color"]; $bodyBg;
-$_REQUEST["navbar-inverse-link-hover-bg"]; transparent;
-$_REQUEST["navbar-inverse-link-active-color"]; $_REQUEST["navbar-inverse-link-hover-color"];
-$_REQUEST["navbar-inverse-link-active-bg"]; darken($_REQUEST["navbar-inverse-bg"], 10%);
-$_REQUEST["navbar-inverse-link-disabled-color"]; #444;
-$_REQUEST["navbar-inverse-link-disabled-bg"]; transparent;
-$_REQUEST["navbar-inverse-brand-color"]; $_REQUEST["navbar-inverse-link-color"];
-$_REQUEST["navbar-inverse-brand-hover-color"]; $bodyBg;
-$_REQUEST["navbar-inverse-brand-hover-bg"]; transparent;
-$_REQUEST["navbar-inverse-toggle-hover-bg"]; #333;
-$_REQUEST["navbar-inverse-toggle-icon-bar-bg"]; $bodyBg;
-$_REQUEST["navbar-inverse-toggle-border-color"]; #333;
-$_REQUEST["pager-border-radius"]; 15px;
-$_REQUEST["pager-disabled-color"]; $_REQUEST["gray-light"];
-$_REQUEST["modal-inner-padding"]; $pLV;
-$_REQUEST["modal-title-padding"]; 15px;
-$_REQUEST["modal-title-line-height"]; $_REQUEST["line-height-base"];
-$_REQUEST["modal-content-bg"]; $bodyBg;
-$_REQUEST["modal-content-border-color"]; rgba(0,0,0,.2);
-$_REQUEST["modal-content-fallback-border-color"]; #999;
-$_REQUEST["modal-backdrop-bg"]; #000;
-$_REQUEST["modal-header-border-color"]; #e5e5e5;
-$_REQUEST["modal-footer-border-color"]; $_REQUEST["modal-header-border-color"];
-$_REQUEST["alert-padding"]; 15px;
-$_REQUEST["alert-border-radius"]; $_REQUEST["border-radius-base"];
-$_REQUEST["alert-link-font-weight"]; bold;
-$_REQUEST["alert-success-bg"]; $_REQUEST["state-success-bg"];
-$_REQUEST["alert-success-text"]; $_REQUEST["state-success-text"];
-$_REQUEST["alert-success-border"]; $_REQUEST["state-success-border"];
-$_REQUEST["alert-info-bg"]; $_REQUEST["state-info-bg"];
-$_REQUEST["alert-info-text"]; $_REQUEST["state-info-text"];
-$_REQUEST["alert-info-border"]; $_REQUEST["state-info-border"];
-$_REQUEST["alert-warning-bg"]; $_REQUEST["state-warning-bg"];
-$_REQUEST["alert-warning-text"]; $_REQUEST["state-warning-text"];
-$_REQUEST["alert-warning-border"]; $_REQUEST["state-warning-border"];
-$_REQUEST["alert-danger-bg"]; $_REQUEST["state-danger-bg"];
-$_REQUEST["alert-danger-text"]; $_REQUEST["state-danger-text"];
-$_REQUEST["alert-danger-border"]; $_REQUEST["state-danger-border"];
-$_REQUEST["progress-bg"]; #f5f5f5;
-$_REQUEST["progress-bar-color"]; $bodyBg;
-$_REQUEST["progress-bar-bg"];  $_REQUEST["brand-primary"];
-$_REQUEST["progress-bar-success-bg"]; $_REQUEST["brand-success"];
-$_REQUEST["progress-bar-warning-bg"]; $_REQUEST["brand-warning"];
-$_REQUEST["progress-bar-danger-bg"]; $_REQUEST["brand-danger"];
-$_REQUEST["progress-bar-info-bg"]; $_REQUEST["brand-info"];
-$_REQUEST["panel-bg"]; $bodyBg;
-$_REQUEST["panel-inner-border"]; #ddd;
-$_REQUEST["panel-border-radius"]; $_REQUEST["border-radius-base"];
-$_REQUEST["panel-footer-bg"]; #f5f5f5;
-$_REQUEST["panel-body-padding"]; 15px;
-$_REQUEST["panel-default-text"]; $_REQUEST["gray-dark"];
-$_REQUEST["panel-default-border"]; #ddd;
-$_REQUEST["panel-default-heading-bg"]; #f5f5f5;
-$_REQUEST["panel-primary-text"]; $bodyBg;
-$_REQUEST["panel-primary-border"]; $_REQUEST["brand-primary"];
-$_REQUEST["panel-primary-heading-bg"]; $_REQUEST["brand-primary"];
-$_REQUEST["panel-success-text"]; $_REQUEST["state-success-text"];
-$_REQUEST["panel-success-border"]; $_REQUEST["state-success-border"];
-$_REQUEST["panel-success-heading-bg"]; $_REQUEST["state-success-bg"];
-$_REQUEST["panel-warning-text"]; $_REQUEST["state-warning-text"];
-$_REQUEST["panel-warning-border"]; $_REQUEST["state-warning-border"];
-$_REQUEST["panel-warning-heading-bg"]; $_REQUEST["state-warning-bg"];
-$_REQUEST["panel-danger-text"]; $_REQUEST["state-danger-text"];
-$_REQUEST["panel-danger-border"]; $_REQUEST["state-danger-border"];
-$_REQUEST["panel-danger-heading-bg"]; $_REQUEST["state-danger-bg"];
-$_REQUEST["panel-info-text"]; $_REQUEST["state-info-text"];
-$_REQUEST["panel-info-border"]; $_REQUEST["state-info-border"];
-$_REQUEST["panel-info-heading-bg"]; $_REQUEST["state-info-bg"];
-$_REQUEST["thumbnail-padding"];$bRB;
-$_REQUEST["thumbnail-bg"]; $_REQUEST["body-bg"];
-$_REQUEST["thumbnail-border"]; #ddd;
-$_REQUEST["thumbnail-border-radius"]; $_REQUEST["border-radius-base"];
-$_REQUEST["thumbnail-caption-color"]; $_REQUEST["text-color"];
-$_REQUEST["thumbnail-caption-padding"]; 9px;
-$_REQUEST["well-bg"]; #f5f5f5;
-$_REQUEST["well-border"];  darken($_REQUEST["well-bg"], 7%);
-$_REQUEST["badge-color"];"]; $bodyBg;
-$_REQUEST["badge-link-hover-color"]; $bodyBg;
-$_REQUEST["badge-bg"]; $_REQUEST["gray-light;
-$_REQUEST["badge-active-color"]; $_REQUEST["link-color"];
-$_REQUEST["badge-active-bg"]; $bodyBg;
-$_REQUEST["badge-font-weight"]; bold;
-$_REQUEST["badge-line-height"]; 1;
-$_REQUEST["badge-border-radius"];$pSH;
-$_REQUEST["breadcrumb-padding-vertical"]; 8px;
-$_REQUEST["breadcrumb-padding-horizontal"]; 15px;
-$_REQUEST["breadcrumb-bg"]; #f5f5f5;
-$_REQUEST["breadcrumb-color"]; #ccc;
-$_REQUEST["breadcrumb-active-color"]; $_REQUEST["gray-light"];
-$_REQUEST["breadcrumb-separator"]; ;
-$_REQUEST["carousel-text-shadow"]; 0 1px 2px rgba(0,0,0,.6);
-$_REQUEST["carousel-control-color"]; $bodyBg;
-$_REQUEST["carousel-control-width"]; 15%;
-$_REQUEST["carousel-control-opacity"]; .5;
-$_REQUEST["carousel-control-font-size"]; $pLV;
-$_REQUEST["carousel-indicator-active-bg"]; $bodyBg;
-$_REQUEST["carousel-indicator-border-color"]; $bodyBg;
-$_REQUEST["carousel-caption-color"]; $bodyBg;
-$_REQUEST["close-color"]; #000;
-$_REQUEST["close-font-weight"]; bold;
-$_REQUEST["close-text-shadow"]; 0 1px 0 $bodyBg;
-$_REQUEST["code-color"]; #c7254e;
-$_REQUEST["code-bg"]; #f9f2f4;
-$_REQUEST["kbd-color"]; $bodyBg;
-$_REQUEST["kbd-bg"]; #333;
-$_REQUEST["pre-bg"]; #f5f5f5;
-$_REQUEST["pre-color"]= $_REQUEST["gray-dark"];
-$_REQUEST["pre-border-color"]; #ccc;
-$_REQUEST["pre-scrollable-max-height"]; 340px;
-$_REQUEST["text-muted"]= $_REQUEST["gray-light"];
-$_REQUEST["abbr-border-color"]= $_REQUEST["gray-light"];
-$_REQUEST["headings-small-color"] = $_REQUEST["gray-light"];
-$_REQUEST["blockquote-small-color"]= $_REQUEST["gray-light"];
-$_REQUEST["blockquote-border-color"]= $_REQUEST["gray-lighter"];
-$_REQUEST["page-header-border-color"] =$_REQUEST["gray-lighter"];
-$_REQUEST["hr-border"]= $_REQUEST["gray-lighter"];
-$_REQUEST["component-offset-horizontal"]; 180px;
-$_REQUEST["container-tablet"]; ((7$pLV + $_REQUEST["grid-gutter-width"]));
-$_REQUEST["container-desktop"]; ((940px + $_REQUEST["grid-gutter-width"]));
-$_REQUEST["container-lg-desktop"]; ((1140px + $_REQUEST["grid-gutter-width"]));
-$_REQUEST["container-sm"] = $_REQUEST["container-tablet"];
-$_REQUEST["container-md"] = $_REQUEST["container-desktop"];
-$_REQUEST["container-lg"]= $_REQUEST["container-large-desktop"]; */
-
-
-
-$navbarD= "html {
+$navbarD = "html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -1152,7 +1025,7 @@ th {
     page-break-after: avoid;
   }
   select {
-    background: ".$_REQUEST['body-bg']." !important;
+    background: " . $_REQUEST['body-bg'] . " !important;
   }
   .navbar {
     display: none;
@@ -6162,13 +6035,19 @@ button.close {
 }";
 
 
+if (isset($_POST['submit'])) {
 
-fwrite($myfile, $navbarD);
-fwrite($myLessfile, $lessVariable);
+    fwrite($myfile, $navbarD);
+    fwrite($myLessfile, $lessVal);
+}
 
-
-
+if (isset($_POST['reset_base'])) {
+    $myTextfile = fopen('reset.txt', "w");
+    fwrite($myTextfile, $txtVariable);
+}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6191,14 +6070,15 @@ fwrite($myLessfile, $lessVariable);
         <form action="index.php" method="post">
             <div ><div>
                     <div class="navbar navbar-fixed-bottom" name="menuBottom">
-                        <button type='submit' class="btn btn-primary">Create CSS</button>
+                        <button type='submit' class="btn btn-primary" name="submit">Create CSS</button>
+                        <button type='submit' class="btn btn-primary" name="reset_base">Reset Base</button>
 
                         <!--ul class="pull-left">
                             <li><button class="btn btn-primary" ng-click="applyLess(false)">Apply</button></li>
-                            <li><label class="checkbox"><input type="checkbox" name="cssAutoapplyless" data-ng-model="autoapplyless" class="ng-pristine ng-valid">Auto</label></li>
+                            <li><label class="checkbox"><input type="checkbox" name="cssAutoapplyless" data-ng-model="autoapplyless" class="">Auto</label></li>
                             <li><button class="btn" ng-click="saveLessVariables()">Save Less Variables</button></li>
                             <li><button class="btn" data-toggle="modal" href="#thankYou" ng-click="saveCSS()">Save CSS</button></li>
-                            <li><label class="checkbox"><input type="checkbox" name="cssMinified" data-ng-model="minified" class="ng-pristine ng-valid">Minified</label></li>
+                            <li><label class="checkbox"><input type="checkbox" name="cssMinified" data-ng-model="minified" class="">Minified</label></li>
                             <li><button data-toggle="modal" href="#myModal" class="btn">Import Less Variables</button></li>
                             <li><button class="btn" ng-click="resetLessVariables()">Reset</button></li>
                         </ul-->
@@ -6216,42 +6096,106 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle">@gray-darker</label>                
                                     <div  id="gray_darker_div" class="input-group colorpicker-component color">
-                                        <input name="gray-darker" type="text" class="form-control" value="<?php echo $gray_darker; ?>">
+                                        <input name="gray-darker" type="text" class="form-control" value="<?php
+                                        if (empty($gray_darker)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/gray-darker:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+
+
+                                                preg_match("/gray-dark:(.*)/", fgets($file), $css_string);
+                                                $gray_dark = str_replace(';', '', $css_string[1]);
+                                            }
+                                        } else
+                                            echo $gray_darker;
+                                        ?>">
 
                                         <span class="input-group-addon" ><i style="background-color: rgb(34, 34, 34);"></i></span>
                                     </div>
 
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@gray-dark</label>                
                                     <div  id="gray-dark-div" class="input-group colorpicker-component color">
-                                        <input name="gray-dark" type="text" class="form-control" value="<?php echo $gray_dark; ?>">
+                                        <input name="gray-dark" type="text" class="form-control" value="<?php
+                                        if (empty($gray_dark)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/gray-dark:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo $gray_dark;
+                                        ?>">
 
                                         <span class="input-group-addon" ><i style="background-color: rgb(34, 34, 34);"></i></span>
                                     </div>
 
 
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@gray</label>                
                                     <div  id="gray-div" class="input-group colorpicker-component color">
-                                        <input name="gray" type="text" class="form-control" value="<?php echo$gray ?>">
+                                        <input name="gray" type="text" class="form-control" value="<?php
+                                        if (empty($gray)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/gray:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$gray
+                                            ?>">
 
                                         <span class="input-group-addon" ><i style="background-color: rgb(34, 34, 34);"></i></span>
                                     </div>
 
 
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@gray-light</label>                
                                     <div  class="input-group colorpicker-component color">
-                                        <input name="gray-light" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$gray_light; ?>">
+                                        <input name="gray-light" type="text"  class=" form-control "  value="<?php
+                                        if (empty($gray_light)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/gray-light:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$gray_light;
+                                        ?>">
                                         <span class="input-group-addon" ><i style="background-color: rgb(34, 34, 34);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@gray-lighter</label>                
                                     <div class="input-group colorpicker-component color">
-                                        <input name="gray-lighter" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$gray_lighter; ?>">
+                                        <input name="gray-lighter" type="text"  class=" form-control "  value="<?php
+                                        if (empty($gray_lighter)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/gray-lighter:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$gray_lighter;
+                                        ?>">
                                         <span class="input-group-addon" ><i style="background-color: rgb(34, 34, 34);"></i></span>
                                     </div>
                                 </div>
@@ -6289,50 +6233,110 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@brand-primary</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" 428bca" data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="brand-primary" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$brand_primary; ?>">
+                                        <input name="brand-primary" type="text"  class=" form-control "  value="<?php
+                                        if (empty($brand_primary)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/brand-primary:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$brand_primary;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(66, 139, 202);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@brand-success</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" 5cb85c" data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="brand-success" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$brand_success; ?>">
+                                        <input name="brand-success" type="text"  class=" form-control "  value="<?php
+                                        if (empty($brand_success)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/brand-success:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$brand_success;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(92, 184, 92);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@brand-warning</label>                
-                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" f0ad4e" data-color-format="hex" ng-class="{
+                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" data-color-format="hex" ng-class="{
                                          'input-group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="brand-warning" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$brand_warning; ?>">
+                                        <input name="brand-warning" type="text"  class=" form-control "  value="<?php
+                                        if (empty($brand_warning)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/brand-warning:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$brand_warning;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(240, 173, 78);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@brand-danger</label>                
-                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" d9534f" data-color-format="hex" ng-class="{
+                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" data-color-format="hex" ng-class="{
                                          'input-group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="brand-danger" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$brand_danger; ?>">
+                                        <input name="brand-danger" type="text"  class=" form-control "  value="<?php
+                                        if (empty($brand_danger)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/brand-danger:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$brand_danger;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(217, 83, 79);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@brand-info</label>                
-                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" 5bc0de" data-color-format="hex" ng-class="{
+                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="brand-info" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$brand_info; ?>">
+                                        <input name="brand-info" type="text"  class=" form-control "  value="<?php
+                                        if (empty($brand_info)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/brand-info:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$brand_info;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(91, 192, 222);"></i></span>
@@ -6356,154 +6360,334 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@body-bg</label>                
-                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" 4fe01d" data-color-format="hex" ng-class="{
+                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="body-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bodyBg; ?>">
+                                        <input name="body-bg" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bodyBg)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/body-bg:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$bodyBg;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(79, 224, 29);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@text-color</label>                
-                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" e63b3b" data-color-format="hex" ng-class="{
+                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="text-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$txcolor;?>">
+                                        <input name="text-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($txcolor)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/text-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$txcolor;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(230, 59, 59);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@link-color</label>                
-                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" ef3939" data-color-format="hex" ng-class="{
+                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" data-color-format="hex" ng-class="{
                                          'input-group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="link-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$linkColor?>">
+                                        <input name="link-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($linkColor)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/link-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$linkColor
+                                            ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(239, 57, 57);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@link-hover-color</label>                
-                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" ed4242" data-color-format="hex" ng-class="{
+                                    <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="link-hover-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$linkhovercolor; ?>">
+                                        <input name="link-hover-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($linkhovercolor)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/link-hover-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$linkhovercolor;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(237, 66, 66);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@padding-base-vertical</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="padding-base-vertical" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" placeholder="6px" value="<?php echo$pbv; ?>">
+                                        <input name="padding-base-vertical" type="text"  class=" form-control "  placeholder="6px" value="<?php
+                                        if (empty($pbv)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/padding-base-vertical:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$pbv;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@padding-base-horizontal</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="padding-base-horizontal" type="text" placeholder="12px" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$padBH; ?>">
+                                        <input name="padding-base-horizontal" type="text" placeholder="12px"  class=" form-control "  value="<?php
+                                        if (empty($padBH)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/padding-base-horizontal:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$padBH;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@padding-large-vertical</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="padding-large-vertical" type="text" placeholder="10px" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pLV; ?>">
+                                        <input name="padding-large-vertical" type="text" placeholder="10px"  class=" form-control "  value="<?php
+                                        if (empty($pLV)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/padding-large-vertical:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$pLV;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@padding-large-horizontal</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="padding-large-horizontal" type="text" placeholder="16px" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pLH; ?>">
+                                        <input name="padding-large-horizontal" type="text" placeholder="16px"  class=" form-control "  value="<?php
+                                        if (empty($pLH)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/padding-large-horizontal:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$pLH;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@padding-small-vertical</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="padding-small-vertical" type="text" placeholder="4px" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()"value="<?php echo$pSV ?>">
+                                        <input name="padding-small-vertical" type="text" placeholder="4px"  class=" form-control " value="<?php echo$pSV ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@padding-small-horizontal</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="padding-small-horizontal" type="text" placeholder="10px" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pSH; ?>">
+                                        <input name="padding-small-horizontal" type="text" placeholder="10px"  class=" form-control "  value="<?php
+                                        if (empty($pSH)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/padding-small-horizontal:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$pSH;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@border-radius-base</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="border-radius-base" type="text" placeholder="4px" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bRB; ?>">
+                                        <input name="border-radius-base" type="text" placeholder="4px"  class=" form-control "  value="<?php
+                                        if (empty($bRB)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/border-radius-base:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$bRB;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@border-radius-large</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="border-radius-large" type="text" placeholder="6px" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bRL; ?>">
+                                        <input name="border-radius-large" type="text" placeholder="6px"  class=" form-control "  value="<?php
+                                        if (empty($bRL)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/border-radius-large:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$bRL;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@border-radius-small</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="border-radius-small" type="text" placeholder="3px" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bRS; ?>">
+                                        <input name="border-radius-small" type="text" placeholder="3px"  class=" form-control "  value="<?php
+                                        if (empty($bRS)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/border-radius-small:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$bRS;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@line-height-large</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="line-height-large" type="text" placeholder="1.33" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$lHL; ?>">
+                                        <input name="line-height-large" type="text" placeholder="1.33"  class=" form-control "  value="<?php
+                                        if (empty($lHL)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/line-height-large:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$lHL;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@line-height-small</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="line-height-small" type="text" placeholder="1.55" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$lHS; ?>">
+                                        <input name="line-height-small" type="text" placeholder="1.55"  class=" form-control "  value="<?php
+                                        if (empty($lHS)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/line-height-small:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$lHS;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@component-active-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="component-active-bg" type="text"  data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$cAB; ?>">
+                                        <input name="component-active-bg" type="text"   class=" form-control "  value="<?php
+                                        if (empty($cAB)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/component-active-bg:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$cAB;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
@@ -6626,184 +6810,412 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@font-family-sans-serif</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-family-sans-serif" type="text" placeholder="Open Sans" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$fFSS; ?>">
+                                        <input name="font-family-sans-serif" type="text" placeholder="Open Sans"  class=" form-control "  value="<?php
+                                        if (empty($fFSS)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-family-sans-serif:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fFSS;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@font-family-serif</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-family-serif" type="text" placeholder="PT Serif" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$fFS; ?>">
+                                        <input name="font-family-serif" type="text" placeholder="PT Serif"  class=" form-control "  value="<?php
+                                        if (empty($fFS)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-family-serif:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fFS;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@font-family-monospace</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-family-monospace" type="text" placeholder="Monaco"   data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$fFM; ?>">
+                                        <input name="font-family-monospace" type="text" placeholder="Monaco"    class=" form-control "  value="<?php
+                                        if (empty($fFM)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-family-monospace:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fFM;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@font-family-base</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-family-base" type="text"  placeholder="Open Sans" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$fFB; ?>">
+                                        <input name="font-family-base" type="text"  placeholder="Open Sans"  class=" form-control "  value="<?php
+                                        if (empty($fFB)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-family-base:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fFB;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@font-size-base</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-size-base" type="text" placeholder="14px" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$fSB; ?>">
+                                        <input name="font-size-base" type="text" placeholder="14px"  class=" form-control "  value="<?php
+                                        if (empty($fSB)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-size-base:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fSB;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@font-size-large</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-size-large" type="text"  placeholder="14px"  data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$fSL; ?>">
+                                        <input name="font-size-large" type="text"  placeholder="14px"   class=" form-control "  value="<?php
+                                        if (empty($fSL)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-size-large:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fSL;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@font-size-small</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-size-small" type="text"  placeholder="14px"  data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()"value="<?php echo$fSS; ?>">
+                                        <input name="font-size-small" type="text"  placeholder="14px"   class=" form-control " value="<?php
+                                        if (empty($fSS)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-size-small:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fSS;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@font-size-h1</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-size-h1" type="text"  placeholder="14px"  data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$fSH1; ?>">
+                                        <input name="font-size-h1" type="text"  placeholder="14px"   class=" form-control "  value="<?php
+                                        if (empty($fSH1)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-size-h1:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fSH1;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@font-size-h2</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-size-h2" type="text"  placeholder="14px"  data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$fSH2; ?>">
+                                        <input name="font-size-h2" type="text"  placeholder="14px"   class=" form-control "  value="<?php
+                                        if (empty($fSH2)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-size-h2:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fSH2;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@font-size-h3</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-size-h3" type="text"  placeholder="14px"  data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$fSH3; ?>">
+                                        <input name="font-size-h3" type="text"  placeholder="14px"   class=" form-control "  value="<?php
+                                        if (empty($fSH3)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-size-h3:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fSH3;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@font-size-h4</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-size-h4" type="text"  placeholder="14px"  data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$fSH4; ?>">
+                                        <input name="font-size-h4" type="text"  placeholder="14px"   class=" form-control "  value="<?php
+                                        if (empty($fSH4)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-size-h4:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fSH4;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@font-size-h5</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-size-h5" type="text"  placeholder="14px"  data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$fSH5; ?>">
+                                        <input name="font-size-h5" type="text"  placeholder="14px"   class=" form-control "  value="<?php
+                                        if (empty($fSH5)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-size-h5:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fSH5;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@font-size-h6</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="font-size-h6" type="text"  placeholder="14px"  data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$fSH6; ?>">
+                                        <input name="font-size-h6" type="text"  placeholder="14px"   class=" form-control "  value="<?php
+                                        if (empty($fSH6)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/font-size-h6:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$fSH6;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@line-height-base</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="line-height-base" type="text"  placeholder="1.4"  data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$lHB; ?>">
+                                        <input name="line-height-base" type="text"  placeholder="1.4"   class=" form-control "  value="<?php
+                                        if (empty($lHB)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/line-height-base:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$lHB;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@line-height-computed</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="line-height-computed" type="text"  placeholder="14px"  data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$lHC; ?>">
+                                        <input name="line-height-computed" type="text"  placeholder="14px"   class=" form-control "  value="<?php
+                                        if (empty($lHC)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/line-height-computed:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$lHC;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@headings-font-family</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="headings-font-family" type="text"  placeholder="Open Sans" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$hFF; ?>">
+                                        <input name="headings-font-family" type="text"  placeholder="Open Sans"  class=" form-control "  value="<?php
+                                        if (empty($hFF)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/headings-font-family:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$hFF;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@headings-font-weight</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="headings-font-weight" type="text" placeholder="500" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$hFW; ?>">
+                                        <input name="headings-font-weight" type="text" placeholder="500"  class=" form-control "  value="<?php
+                                        if (empty($hFW)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/headings-font-weight:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$hFW;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@headings-line-height</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="headings-line-height" type="text" placeholder="1.1" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$hLH; ?>">
+                                        <input name="headings-line-height" type="text" placeholder="1.1"  class=" form-control "  value="<?php
+                                        if (empty($hLH)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/headings-line-height:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$hLH;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@headings-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="headings-color" type="text" placeholder="inherit" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$hC; ?>">
+                                        <input name="headings-color" type="text" placeholder="inherit"  class=" form-control "  value="<?php
+                                        if (empty($hC)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/headings-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$hC;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
@@ -6854,187 +7266,437 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@btn-font-weight</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-font-weight" type="text" placeholder="normal" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bFW; ?>">
+                                        <input name="btn-font-weight" type="text" placeholder="normal"  class=" form-control "  value="<?php
+                                        if (empty($bFW)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-font-weight:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$bFW;
+                                        ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-default-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-default-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bDC; ?>">
+                                        <input name="btn-default-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bDC)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-default-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$bDC;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(51, 51, 51);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-default-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-default-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bDB; ?>">
+                                        <input name="btn-default-bg" type="text"  class=" form-control "  value="<?php
+                                               if (empty($bDB)) {
+                                                   $file = fopen('reset.txt', "r");
+                                                   while (!feof($file)) {
+                                                       // check Grays
+
+                                                       preg_match("/btn-default-bg:(.*)/", fgets($file), $css_string);
+                                                       $css_val = str_replace(';', '', $css_string[1]);
+                                                       echo$css_val;
+                                                   }
+                                               } else
+                                                   echo$bDB;
+                                               ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-default-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-default-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bDBorder; ?>">
+                                        <input name="btn-default-border" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bDBorder)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-default-border:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$bDBorder;
+                                               ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(204, 204, 204);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-primary-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-primary-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()"value="<?php echo$bPC; ?>">
+                                        <input name="btn-primary-color" type="text"  class=" form-control " value="<?php
+                                              if (empty($bPC)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/btn-primary-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                              } else
+                                                  echo$bPC;
+                                              ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-primary-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-primary-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bPB; ?>">
+                                        <input name="btn-primary-bg" type="text"  class=" form-control "  value="<?php
+                                              if (empty($bPB)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/btn-primary-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                              } else
+                                                  echo$bPB;
+                                              ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-primary-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-primary-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bPBB; ?>">
+                                        <input name="btn-primary-border" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bPBB)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-primary-border:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$bPBB;
+                                              ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-success-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-success-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bSC; ?>">
+                                        <input name="btn-success-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bSC)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-success-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$bSC;
+                                              ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-success-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-success-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bSB; ?>">
+                                        <input name="btn-success-bg" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bSB)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-success-bg:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                        } else
+                                            echo$bSB;
+                                              ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-success-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-success-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bSBB; ?>">
+                                        <input name="btn-success-border" type="text"  class=" form-control "  value="<?php
+                                    if (empty($bSBB)) {
+                                        $file = fopen('reset.txt', "r");
+                                        while (!feof($file)) {
+                                            // check Grays
+
+                                            preg_match("/btn-success-border:(.*)/", fgets($file), $css_string);
+                                            $css_val = str_replace(';', '', $css_string[1]);
+                                            echo$css_val;
+                                        }
+                                    } else
+                                        echo$bSBB;
+                                    ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-warning-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-warning-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bWC; ?>">
+                                        <input name="btn-warning-color" type="text"  class=" form-control "  value="<?php
+                                    if (empty($bSBB)) {
+                                        $file = fopen('reset.txt', "r");
+                                        while (!feof($file)) {
+                                            // check Grays
+
+                                            preg_match("/btn-success-border:(.*)/", fgets($file), $css_string);
+                                            $css_val = str_replace(';', '', $css_string[1]);
+                                            echo$css_val;
+                                        }
+                                        fclose($file);
+                                    } else
+                                        echo$bWC;
+                                    ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-warning-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-warning-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bWB; ?>">
+                                        <input name="btn-warning-bg" type="text"  class=" form-control "  value="<?php
+                                         if (empty($bWB)) {
+                                             $file = fopen('reset.txt', "r");
+                                             while (!feof($file)) {
+                                                 // check Grays
+
+                                                 preg_match("/btn-warning-bg:(.*)/", fgets($file), $css_string);
+                                                 $css_val = str_replace(';', '', $css_string[1]);
+                                                 echo$css_val;
+                                             }
+                                             fclose($file);
+                                         } else
+                                             echo$bWB;
+                                         ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-warning-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-warning-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bWBb; ?>">
+                                        <input name="btn-warning-border" type="text"  class=" form-control "  value="<?php
+                                         if (empty($bWBb)) {
+                                             $file = fopen('reset.txt', "r");
+                                             while (!feof($file)) {
+                                                 // check Grays
+
+                                                 preg_match("/btn-warning-border:(.*)/", fgets($file), $css_string);
+                                                 $css_val = str_replace(';', '', $css_string[1]);
+                                                 echo$css_val;
+                                             }
+                                             fclose($file);
+                                         } else
+                                             echo$bWBb;
+                                         ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-danger-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-danger-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bDC; ?>">
+                                        <input name="btn-danger-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bDC)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-danger-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$bDC;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-danger-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-danger-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bDB; ?>">
+                                        <input name="btn-danger-bg" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bDB)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-danger-bg:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$bDB;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-danger-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-danger-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bDBB; ?>">
+                                        <input name="btn-danger-border" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bDBB)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-danger-border:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$bDBB;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-info-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-info-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bIC; ?>">
+                                        <input name="btn-info-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bIC)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-info-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$bIC;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-info-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-info-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bIL; ?>">
+                                        <input name="btn-info-bg" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bIL)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-info-bg:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$bIL;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-info-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-info-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bII; ?>">
+                                        <input name="btn-info-border" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bII)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-info-border:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$bII;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@btn-link-disabled-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="btn-link-disabled-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$bIDC; ?>">
+                                        <input name="btn-link-disabled-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($bIDC)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/btn-link-disabled-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$bIDC;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
@@ -7317,99 +7979,242 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@dropdown-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="dropdown-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$Drop_Bg; ?>">
+                                        <input name="dropdown-bg" type="text"  class=" form-control "  value="<?php
+                                        if (empty($Drop_Bg)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/dropdown-bg:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$Drop_Bg;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@dropdown-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="dropdown-border" type="text" placeholder="rgba(0,0,0,.15)" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$Drop_Br; ?>" >
+                                        <input name="dropdown-border" type="text" placeholder="rgba(0,0,0,.15)"  class=" form-control "  value="<?php
+                                        if (empty($Drop_Br)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/dropdown-border:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$Drop_Br;
+                                        ?>" >
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@dropdown-divider-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="dropdown-divider-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$Drop_Di_Bg; ?>">
+                                        <input name="dropdown-divider-bg" type="text"  class=" form-control "  value="<?php
+                                        if (empty($Drop_Di_Bg)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/dropdown-divider-bg:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$Drop_Di_Bg;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(229, 229, 229);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@dropdown-link-active-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="dropdown-link-active-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$Drop_Link_active; ?>">
+                                        <input name="dropdown-link-active-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($Drop_Link_active)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/dropdown-link-active:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$Drop_Link_active;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@dropdown-link-active-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="dropdown-link-active-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$dropdown_link_active_bg; ?>">
+                                        <input name="dropdown-link-active-bg" type="text"  class=" form-control "  value="<?php
+                                        if (empty($dropdown_link_active_bg)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/dropdown-link-active-bg:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$dropdown_link_active_bg;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@dropdown-link-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="dropdown-link-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$dropdown_link_color; ?>">
+                                        <input name="dropdown-link-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($dropdown_link_color)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/dropdown-link-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$dropdown_link_color;
+                                        ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@dropdown-link-hover-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="dropdown-link-hover-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$dropdown_link_hover_color; ?>">
+                                        <input name="dropdown-link-hover-color" type="text"  class=" form-control "  value="<?php
+                                              if (empty($dropdown_link_hover_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/dropdown-link-hover-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else
+                                                  echo$dropdown_link_hover_color;
+                                              ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@dropdown-link-hover-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="dropdown-link-hover-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$dropdown_link_hover_bg; ?>">
+                                        <input name="dropdown-link-hover-bg" type="text"  class=" form-control "  value="<?php
+                                        if (empty($dropdown_link_hover_bg)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/dropdown-link-hover-bg:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$dropdown_link_hover_bg;
+                                              ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@dropdown-link-disabled-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="dropdown-link-disabled-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$dropdown_link_disabled_color; ?>">
+                                        <input name="dropdown-link-disabled-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($dropdown_link_disabled_color)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/dropdown-link-disabled-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$dropdown_link_disabled_color;
+                                              ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@dropdown-header-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="dropdown-header-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$dropdown_header_color; ?>">
+                                        <input name="dropdown-header-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($dropdown_header_colorn_h)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/dropdown-header-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$dropdown_header_color;
+                                              ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@dropdown-caret-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="dropdown-caret-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$dropdown_caret_color; ?>">
+                                        <input name="dropdown-caret-color" type="text"  class=" form-control "  value="<?php
+                                        if (empty($dropdown_caret_color)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/dropdown-caret-color:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$dropdown_caret_color;
+                                              ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(0, 0, 0);"></i></span>
                                     </div>
@@ -7481,123 +8286,283 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@input-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="input-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$input_bg; ?>">
+                                        <input name="input-bg" type="text"  class=" form-control "  value="<?php
+                                        if (empty($input_Bg)) {
+                                            $file = fopen('reset.txt', "r");
+                                            while (!feof($file)) {
+                                                // check Grays
+
+                                                preg_match("/input-bg:(.*)/", fgets($file), $css_string);
+                                                $css_val = str_replace(';', '', $css_string[1]);
+                                                echo$css_val;
+                                            }
+                                            fclose($file);
+                                        } else
+                                            echo$input_bg;
+                                              ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@input-bg-disabled</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="input-bg-disabled" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$input_bg_disabled; ?>">
+                                        <input name="input-bg-disabled" type="text"  class=" form-control "  value="<?php
+                                         if (empty($input_bg_disabled)) {
+                                             $file = fopen('reset.txt', "r");
+                                             while (!feof($file)) {
+                                                 // check Grays
+
+                                                 preg_match("/input-bg-disabled:(.*)/", fgets($file), $css_string);
+                                                 $css_val = str_replace(';', '', $css_string[1]);
+                                                 echo$css_val;
+                                             }
+                                             fclose($file);
+                                         } else
+                                             echo$input_bg_disabled;
+                                         ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@input-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="input-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$input_color; ?>">
+                                        <input name="input-color" type="text"  class=" form-control "  value="<?php
+                                              if (empty($input_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/input-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else
+                                                  echo$input_color;
+                                              ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@input-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="input-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$input_border; ?>">
+                                        <input name="input-border" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($input_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/input-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$input_border; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(204, 204, 204);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@input-border-radius</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="input-border-radius" type="text" placeholder="4px" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$input_border_radius; ?>">
+                                        <input name="input-border-radius" type="text" placeholder="4px"  class=" form-control "  value="<?php 
+                                         if (empty($input_border_radius)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/input-border-radius:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$input_border_radius; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@input-color-placeholder</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="input-color-placeholder" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$input_color_placeholder; ?>">
+                                        <input name="input-color-placeholder" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($input_color_placeholder)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/input-color-placeholder:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$input_color_placeholder; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@input-height-base</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="input-height-base" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$input_height_base; ?>">
+                                        <input name="input-height-base" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($input_height_base)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/input-height-base:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else
+                                                  echo$input_height_base; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@input-height-large</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="input-height-large" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$input_height_large; ?>">
+                                        <input name="input-height-large" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($input_height_large)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/input-height-large:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$input_height_large; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@input-height-small</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="input-height-small" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$input_height_small; ?>">
+                                        <input name="input-height-small" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($input_height_small)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/input-height-small:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$input_height_small; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@legend-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="legend-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$legend_color; ?>">
+                                        <input name="legend-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($legend_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/legend-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  
+                                                  echo$legend_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@legend-border-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="legend-border-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$legend_border_color; ?>">
+                                        <input name="legend-border-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($legend_border_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/legend-border-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$legend_border_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(229, 229, 229);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@input-group-addon-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="input-group-addon-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$input_group_addon_bg; ?>">
+                                        <input name="input-group-addon-bg" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($input_group_addon_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/input-group-addon-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$input_group_addon_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@input-group-addon-border-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="input-group-addon-border-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$input_group_addon_border_color; ?>">
+                                        <input name="input-group-addon-border-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($input_group_addon_border_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/input-group-addon-border-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$input_group_addon_border_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
@@ -7727,69 +8692,153 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@table-cell-padding</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="table-cell-padding" type="text" placeholder="8px" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$table_cell_padding; ?>">
+                                        <input name="table-cell-padding" type="text" placeholder="8px"  class=" form-control "  value="<?php 
+                                         if (empty($table_cell_padding)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/table-cell-padding:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$table_cell_padding; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@table-condensed-cell-padding</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="table-condensed-cell-padding" placeholder="5px" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$table_condensed_cell_padding; ?>">
+                                        <input name="table-condensed-cell-padding" placeholder="5px" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($table_condensed_cell_padding)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/table-condensed-cell-padding:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else  
+                                                  echo$table_condensed_cell_padding; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@table-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="table-bg" type="text" placeholder="transparent" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$table_bg; ?>">
+                                        <input name="table-bg" type="text" placeholder="transparent"  class=" form-control "  value="<?php 
+                                        if (empty($table_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/table-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$table_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@table-bg-accent</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="table-bg-accent" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$table_bg_accent; ?>">
+                                        <input name="table-bg-accent" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($table_bg_accent)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/table-bg-accent:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$table_bg_accent; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(249, 249, 249);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@table-bg-hover</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="table-bg-hover" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$table_bg_hover; ?>">
+                                        <input name="table-bg-hover" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($table_bg_hover)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/table-bg-hover:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else  
+                                                  echo$table_bg_hover; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(245, 245, 245);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@table-bg-active</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="table-bg-active" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$table_bg_active; ?>">
+                                        <input name="table-bg-active" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($table_bg_active)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/table-bg-active:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$table_bg_active; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@table-border-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="table-border-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$table_border_color; ?>">
+                                        <input name="table-border-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($table_border_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/table-border-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else  
+                                                  echo$table_border_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(221, 221, 221);"></i></span>
@@ -7919,203 +8968,455 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@navbar-height</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-height" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_height; ?>">
+                                        <input name="navbar-height" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($navbar_height)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-height:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_height; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-margin-bottom</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-margin-bottom" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_margin_bottom; ?>">
+                                        <input name="navbar-margin-bottom" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_margin_bottom)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-margin-bottom:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_margin_bottom; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_color; ?>">
+                                        <input name="navbar-default-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(119, 119, 119);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_bg; ?>">
+                                        <input name="navbar-default-bg" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(248, 248, 248);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_border; ?>">
+                                        <input name="navbar-default-border" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_border; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-border-radius</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-border-radius" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_border_radius; ?>">
+                                        <input name="navbar-border-radius" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_border_radius)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-border-radius:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_border_radius; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-padding-horizontal</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-padding-horizontal" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_padding_horizontal; ?>">
+                                        <input name="navbar-padding-horizontal" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_padding_horizontal)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-padding-horizontal:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_padding_horizontal; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-padding-vertical</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-padding-vertical" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_padding_vertical; ?>">
+                                        <input name="navbar-padding-vertical" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_padding_vertical)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-padding-vertical:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_padding_vertical; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-link-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-link-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_link_color; ?>">
+                                        <input name="navbar-default-link-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_link_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-link-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_link_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(119, 119, 119);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-link-hover-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-link-hover-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_link_hover_color; ?>">
+                                        <input name="navbar-default-link-hover-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_link_hover_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-link-hover-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_link_hover_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(51, 51, 51);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-link-hover-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-link-hover-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_link_hover_bg ?>">
+                                        <input name="navbar-default-link-hover-bg" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_link_hover_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-link-hover-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_link_hover_bg ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-link-active-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-link-active-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_link_active_color; ?>">
+                                        <input name="navbar-default-link-active-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_link_active_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-link-active-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_link_active_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-link-active-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-link-active-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_link_active_bg; ?>">
+                                        <input name="navbar-default-link-active-bg" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_link_active_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-link-active-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_link_active_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-link-disabled-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-link-disabled-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_link_disabled_color; ?>">
+                                        <input name="navbar-default-link-disabled-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_link_disabled_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-link-disabled-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_link_disabled_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-link-disabled-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-link-disabled-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_link_disabled_bg; ?>">
+                                        <input name="navbar-default-link-disabled-bg" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_link_disabled_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-link-disabled-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_link_disabled_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-brand-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-brand-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_brand_color; ?>">
+                                        <input name="navbar-default-brand-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_brand_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-brand-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_brand_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-brand-hover-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-brand-hover-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_brand_hover_color; ?>">
+                                        <input name="navbar-default-brand-hover-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_brand_hover_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-brand-hover-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_brand_hover_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-brand-hover-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-brand-hover-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_brand_hover_bg; ?>">
+                                        <input name="navbar-default-brand-hover-bg" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_brand_hover_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-brand-hover-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_brand_hover_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-toggle-hover-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-toggle-hover-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_toggle_hover_bg; ?>">
+                                        <input name="navbar-default-toggle-hover-bg" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_toggle_hover_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-toggle-hover-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_toggle_hover_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(221, 221, 221);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-toggle-icon-bar-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="navbar-default-toggle-icon-bar-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_toggle_icon_bar_bg; ?>">
+                                        <input name="navbar-default-toggle-icon-bar-bg" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($navbar_default_toggle_icon_bar_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-toggle-icon-bar-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_toggle_icon_bar_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(136, 136, 136);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@navbar-default-toggle-border-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" ddd" data-color-format="hex" ng-class="{
                                          'input-group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="navbar-default-toggle-border-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$navbar_default_toggle_border_color; ?>">
+                                         <input name="navbar-default-toggle-border-color" type="text"  class=" form-control "  value="<?php 
+                                          if (empty($navbar_default_toggle_border_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/navbar-default-toggle-border-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$navbar_default_toggle_border_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(221, 221, 221);"></i></span>
                                     </div>
@@ -8184,135 +9485,303 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@nav-link-padding</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="nav-link-padding" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_link_padding; ?>">
+                                        <input name="nav-link-padding" type="text"  class=" form-control "  value="<?php 
+                                          if (empty($nav_link_padding)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-link-padding:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$nav_link_padding; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-link-hover-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="nav-link-hover-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_link_hover_bg; ?>">
+                                        <input name="nav-link-hover-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($nav_link_hover_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-link-hover-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$nav_link_hover_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-disabled-link-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="nav-disabled-link-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_disabled_link_color; ?>">
+                                        <input name="nav-disabled-link-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($nav_disabled_link_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-disabled-link-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$nav_disabled_link_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-disabled-link-hover-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="nav-disabled-link-hover-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_disabled_link_hover_color; ?>">
+                                        <input name="nav-disabled-link-hover-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($nav_disabled_link_hover_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-disabled-link-hover-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$nav_disabled_link_hover_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-tabs-border-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="nav-tabs-border-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_tabs_border_color; ?>">
+                                        <input name="nav-tabs-border-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($nav_tabs_border_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-tabs-border-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$nav_tabs_border_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(221, 221, 221);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-tabs-link-hover-border-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="nav-tabs-link-hover-border-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_tabs_link_hover_border_color; ?>">
+                                        <input name="nav-tabs-link-hover-border-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($nav_link_hover_border_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-link-hover-border-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$nav_tabs_link_hover_border_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-tabs-active-link-hover-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="nav-tabs-active-link-hover-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_tabs_active_link_hover_bg; ?>">
+                                        <input name="nav-tabs-active-link-hover-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($nav_tabs_active_link_hover_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-tabs-active-link-hover-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$nav_tabs_active_link_hover_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-tabs-active-link-hover-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="nav-tabs-active-link-hover-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_tabs_active_link_hover_color; ?>">
+                                        <input name="nav-tabs-active-link-hover-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($nav_tabs_active_link_hover_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-tabs-active-link-hover-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$nav_tabs_active_link_hover_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-tabs-active-link-hover-border-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" ddd" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="nav-tabs-active-link-hover-border-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_tabs_active_link_hover_border_color; ?>">
+                                         <input name="nav-tabs-active-link-hover-border-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($nav_tabs_active_link_hover_border_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-tabs-active-link-hover-border-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else  
+                                                  echo$nav_tabs_active_link_hover_border_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(221, 221, 221);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-tabs-justified-link-border-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" ddd" data-color-format="hex" ng-class="{
                                          'input-group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="nav-tabs-justified-link-border-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_tabs_justified_link_border_color; ?>">
+                                         <input name="nav-tabs-justified-link-border-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($nav_tabs_justified_link_border_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-tabs-justified-link-border-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$nav_tabs_justified_link_border_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(221, 221, 221);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-tabs-justified-active-link-border-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="nav-tabs-justified-active-link-border-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_tabs_justified_active_link_border_color; ?>">
+                                        <input name="nav-tabs-justified-active-link-border-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($nav_tabs_justified_active_link_border_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-tabs-justified-active-link-border-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$nav_tabs_justified_active_link_border_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-pills-border-radius</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="nav-pills-border-radius" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_pills_border_radius; ?>">
+                                        <input name="nav-pills-border-radius" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($nav_pills_border_radius)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-pills-border-radius:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$nav_pills_border_radius; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-pills-active-link-hover-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="nav-pills-active-link-hover-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_pills_active_link_hover_bg; ?>">
+                                        <input name="nav-pills-active-link-hover-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($nav_pills_active_link_hover_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-pills-active-link-hover-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$nav_pills_active_link_hover_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@nav-pills-active-link-hover-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="nav-pills-active-link-hover-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$nav_pills_active_link_hover_color; ?>">
+                                        <input name="nav-pills-active-link-hover-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($nav_pills_active_link_hover_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/nav-pills-active-link-hover-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else  
+                                                  echo$nav_pills_active_link_hover_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
@@ -8363,39 +9832,87 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@jumbotron-padding</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="jumbotron-padding" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$jumbotron_padding; ?>">
+                                        <input name="jumbotron-padding" type="text"  class=" form-control "  value="<?php 
+                                           if (empty($jumbotron_padding)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/jumbotron-padding:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$jumbotron_padding; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@jumbotron-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="jumbotron-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$jumbotron_color; ?>">
+                                        <input name="jumbotron-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($jumbotron_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/jumbotron-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$jumbotron_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@jumbotron-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="jumbotron-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$jumbotron_bg; ?>">
+                                        <input name="jumbotron-bg" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($jumbotron_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/jumbotron-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$jumbotron_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@jumbotron-font-size</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="jumbotron-font-size" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$jumbotron_font_size; ?>">
+                                        <input name="jumbotron-font-size" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($jumbotron_font_size)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/jumbotron-font-size:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$jumbotron_font_size; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
@@ -8426,171 +9943,387 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@pagination-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pagination-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pagination_bg; ?>">
+                                        <input name="pagination-bg" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($pagination_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pagination-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pagination_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pagination-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" ddd" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="pagination-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()"value="<?php echo$pagination_border; ?>">
+                                         <input name="pagination-border" type="text"  class=" form-control " value="<?php 
+                                         if (empty($pagination_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pagination-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pagination_border; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(221, 221, 221);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pagination-hover-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pagination-hover-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pagination_hover_bg; ?>">
+                                        <input name="pagination-hover-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pagination_hover_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pagination-hover-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pagination_hover_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pagination-hover-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pagination-hover-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pagination_hover_color; ?>">
+                                        <input name="pagination-hover-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pagination_hover_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pagination-hover-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pagination_hover_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pagination-hover-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" ddd" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="pagination-hover-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pagination_hover_border; ?>">
+                                         <input name="pagination-hover-border" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($pagination_hover_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pagination-hover-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pagination_hover_border; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(221, 221, 221);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pagination-active-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pagination-active-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pagination_active_bg; ?>">
+                                        <input name="pagination-active-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pagination_active_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pagination-active-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pagination_active_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pagination-active-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pagination-active-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pagination_active_color; ?>">
+                                        <input name="pagination-active-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pagination_active_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pagination-active-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pagination_active_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pagination-active-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pagination-active-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pagination_active_border; ?>">
+                                        <input name="pagination-active-border" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pagination_active_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pagination-active-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pagination_active_border; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pagination-disabled-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pagination-disabled-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pagination_disabled_color; ?>">
+                                        <input name="pagination-disabled-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pagination_disables_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pagination-disabled-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pagination_disabled_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pagination-disabled-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pagination-disabled-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pagination_disabled_bg; ?>">
+                                        <input name="pagination-disabled-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pagination_disabled_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pagination-disabled-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pagination_disabled_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pagination-disabled-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" ddd" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="pagination-disabled-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pagination_disabled_border; ?>">
+                                         <input name="pagination-disabled-border" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($pagination_disabled_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pagination-disabled-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pagination_disabled_border; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(221, 221, 221);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pager-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pager-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pager_bg; ?>">
+                                        <input name="pager-bg" type="text"  class=" form-control "  value="<?php
+                                        if (empty($pager_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pager-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pager_bg; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pager-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pager-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pager_border; ?>">
+                                        <input name="pager-border" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pager_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pager-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pager_border; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pager-border-radius</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pager-border-radius" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pager_border_radius; ?>">
+                                        <input name="pager-border-radius" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pager_border_radius)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pager-border-radius:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pager_border_radius; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pager-hover-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pager-hover-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pager_hover_bg; ?>">
+                                        <input name="pager-hover-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pager_hover_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pager-hover-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pager_hover_bg; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pager-active-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pager-active-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pager_active_bg; ?>">
+                                        <input name="pager-active-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pager_active_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pager-active-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pager_active_bg; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pager-active-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pager-active-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pager_active_color; ?>">
+                                        <input name="pager-active-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pager_active_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pager-active-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pager_active_color; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@pager-disabled-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="pager-disabled-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$pager_disabled_color; ?>">
+                                        <input name="pager-disabled-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($pager_disabled_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/pager-disabled-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$pager_disabled_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
@@ -8684,115 +10417,259 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@state-warning-text</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" c09853" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="state-warning-text" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$state_warning_text; ?>">
+                                         <input name="state-warning-text" type="text"  class=" form-control "  value="<?php 
+                                                                if (empty($state_warning_text)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/state-warning-text:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$state_warning_text; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(192, 152, 83);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@state-warning-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" fcf8e3" data-color-format="hex" ng-class="{
                                          'input-group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="state-warning-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$state_warning_bg; ?>">
+                                         <input name="state-warning-bg" type="text"  class=" form-control "  value="<?php 
+                                                                if (empty($state_warning_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/state-warning-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$state_warning_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(252, 248, 227);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@state-warning-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="state-warning-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$state_warning_border; ?>">
+                                        <input name="state-warning-border" type="text"  class=" form-control "  value="<?php 
+                                           if (empty($state_warning_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/state-warning-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$state_warning_border; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@state-danger-text</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" b94a48" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="state-danger-text" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$state_danger_text; ?>">
+                                         <input name="state-danger-text" type="text"  class=" form-control "  value="<?php 
+                                            if (empty($state_danger_text)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/state-danger-text:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$state_danger_text; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(185, 74, 72);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@state-danger-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" f2dede" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="state-danger-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$state_danger_bg; ?>">
+                                         <input name="state-danger-bg" type="text"  class=" form-control "  value="<?php 
+                                            if (empty($state_danger_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/state-danger-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$state_danger_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(242, 222, 222);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@state-danger-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="state-danger-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$state_danger_border; ?>">
+                                        <input name="state-danger-border" type="text"  class=" form-control "  value="<?php 
+                                           if (empty($state_danger_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/state-danger-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$state_danger_border; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@state-success-text</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" 468847" data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="state-success-text" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$state_success_text; ?>">
+                                        <input name="state-success-text" type="text"  class=" form-control "  value="<?php 
+                                           if (empty($state_success_text)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/state-success-text:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$state_success_text; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(70, 136, 71);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@state-success-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" dff0d8" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="state-success-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$state_success_bg; ?>">
+                                         <input name="state-success-bg" type="text"  class=" form-control "  value="<?php 
+                                            if (empty($state_success_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/state-success-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$state_success_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(223, 240, 216);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@state-success-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="state-success-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$state_success_border; ?>">
+                                        <input name="state-success-border" type="text"  class=" form-control "  value="<?php 
+                                           if (empty($state_success_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/state-success-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$state_success_border; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@state-info-text</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" 3a87ad" data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="state-info-text" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$state_info_text; ?>">
+                                        <input name="state-info-text" type="text"  class=" form-control "  value="<?php 
+                                           if (empty($state_info_text)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/state-info-text:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$state_info_text; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(58, 135, 173);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@state-info-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" d9edf7" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="state-info-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$state_in; ?>">
+                                         <input name="state-info-bg" type="text"  class=" form-control "  value="<?php 
+                                            if (empty($state_in)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/state-in:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$state_in; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(217, 237, 247);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@state-info-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="state-info-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$state_info_border; ?>">
+                                        <input name="state-info-border" type="text"  class=" form-control "  value="<?php 
+                                           if (empty($state_info_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/state-info-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$state_info_border; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
@@ -8907,60 +10784,132 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@tooltip-max-width</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="tooltip-max-width" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$tooltip_max_width; ?>">
+                                        <input name="tooltip-max-width" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($tooltip_max_width)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/tooltip-max-width:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$tooltip_max_width; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@tooltip-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="tooltip-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$tooltip_color; ?>">
+                                        <input name="tooltip-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($tooltip_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/tooltip-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$tooltip_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@tooltip-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" 000" data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="tooltip-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$tooltip_bg; ?>">
+                                        <input name="tooltip-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($tooltip_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/tooltip-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$tooltip_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(0, 0, 0);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@tooltip-arrow-width</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="tooltip-arrow-width" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$tooltip_arrow_width; ?>">
+                                        <input name="tooltip-arrow-width" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($tooltip_arrow_width)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/tooltip-arrow-width:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$tooltip_arrow_width; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@tooltip-arrow-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="tooltip-arrow-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$tooltip_arrow_color; ?>">
+                                        <input name="tooltip-arrow-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($tooltip_arrow_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/tooltip-arrow-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$tooltip_arrow_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@tooltip-opacity</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="tooltip-opacity" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$tooltip_opacity; ?>">
+                                        <input name="tooltip-opacity" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($tooltip_opacity)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/tooltip-opacity:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$tooltip_opacity; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
@@ -8994,95 +10943,215 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@popover-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="popover-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$popover_bg; ?>">
+                                        <input name="popover-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($popover_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/popover-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$popover_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@popover-max-width</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="popover-max-width" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$popover_max_width; ?>">
+                                        <input name="popover-max-width" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($popover_max_width)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/popover-max-width:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$popover_max_width; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@popover-border-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="popover-border-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$popover_border_color; ?>">
+                                        <input name="popover-border-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($popover_border_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/popover-border-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else  
+                                                  echo$popover_border_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@popover-fallback-border-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" ccc" data-color-format="hex" ng-class="{
                                          'input-group color colorpicker'
                                          : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="popover-fallback-border-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$popover_fallback_border_color; ?>">
+                                         <input name="popover-fallback-border-color" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($popover_fallback_border_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/popover-fallback-border-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$popover_fallback_border_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(204, 204, 204);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@popover-title-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="popover-title-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$popover_title_bg; ?>">
+                                        <input name="popover-title-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($popover_title_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/popover-title-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else  
+                                                  echo$popover_title_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@popover-arrow-width</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="popover-arrow-width" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$popover_arrow_width; ?>">
+                                        <input name="popover-arrow-width" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($popover_arrow_width)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/popover-arrow-width:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$popover_arrow_width; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@popover-arrow-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="popover-arrow-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$popover_arrow_color; ?>">
+                                        <input name="popover-arrow-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($popover_arrow_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/popover-arrow-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$popover_arrow_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@popover-arrow-outer-width</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="popover-arrow-outer-width" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$popover_arrow_outer_width; ?>">
+                                        <input name="popover-arrow-outer-width" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($popover_arrow_outer_width)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/popover-arrow-outer-width:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$popover_arrow_outer_width; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@popover-arrow-outer-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="popover-arrow-outer-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$popover_arrow_outer_color; ?>">
+                                        <input name="popover-arrow-outer-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($popover_arrow_outer_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/popover-arrow-outer-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$popover_arrow_outer_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@popover-arrow-outer-fallback-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" 999" data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="popover-arrow-outer-fallback-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$popover_arrow_outer_fallback_color; ?>">
+                                        <input name="popover-arrow-outer-fallback-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($popover_arrow_outer_fallback_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/popover-arrow-outer-fallback-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else  
+                                                  echo$popover_arrow_outer_fallback_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(153, 153, 153);"></i></span>
@@ -9155,94 +11224,214 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@list-group-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="list-group-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$list_group_bg; ?>">
+                                        <input name="list-group-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($list_group_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/list-group-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$list_group_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@list-group-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" ddd" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="list-group-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$list_group_border; ?>">
+                                         <input name="list-group-border" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($list_group_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/list-group-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$list_group_border; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(221, 221, 221);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@list-group-border-radius</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="list-group-border-radius" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$list_group_border_radius; ?>">
+                                        <input name="list-group-border-radius" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($list_group_border_radius)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/list-group-border-radius:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$list_group_border_radius; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@list-group-hover-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" f5f5f5" data-color-format="hex" ng-class="{
                                          'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                         <input name="list-group-hover-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$list_group_hover_bg; ?>">
+                                         <input name="list-group-hover-bg" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($list_group_hover_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/list-group-hover-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else  
+                                                  echo$list_group_hover_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(245, 245, 245);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@list-group-active-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="list-group-active-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$list_group_active_color; ?>">
+                                        <input name="list-group-active-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($list_group_active_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/list-group-active-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$list_group_active_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@list-group-active-bg</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="list-group-active-bg" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$list_group_active_bg; ?>">
+                                        <input name="list-group-active-bg" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($list_group_active_bg)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/list-group-active-bg:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$list_group_active_bg; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@list-group-active-border</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="list-group-active-border" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$list_group_active_border; ?>">
+                                        <input name="list-group-active-border" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($list_group_active_border)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/list-group-active-border:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$list_group_active_border; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                         : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@list-group-active-text-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker"  data-color-format="hex" ng-class="{
                                             'input-group color colorpicker'
                                                     : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="list-group-active-text-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$list_group_active_text_color; ?>">
+                                        <input name="list-group-active-text-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($list_group_active_text_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/list-group-active-text-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$list_group_active_text_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(255, 255, 255);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@list-group-link-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" 555" data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="list-group-link-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$list_group_link_color; ?>">
+                                        <input name="list-group-link-color" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($list_group_link_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/list-group-link-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$list_group_link_color; ?>">
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden'
                                                 : !colorpicker(variable.type)}"><i style="background-color: rgb(85, 85, 85);"></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@list-group-link-heading-color</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)} input-group color colorpicker" 333" data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="list-group-link-heading-color" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()"value="<?php echo$list_group_link_heading_color; ?>" >
+                                        <input name="list-group-link-heading-color" type="text"  class=" form-control " value="<?php 
+                                        if (empty($list_group_link_heading_color)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/list-group-link-heading-color:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$list_group_link_heading_color; ?>" >
                                         <span class="input-group-addon" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i style="background-color: rgb(51, 51, 51);"></i></span>
                                     </div>
@@ -9310,20 +11499,44 @@ fwrite($myLessfile, $lessVariable);
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <!-- ngRepeat: variable in group.data --><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                <!-- ngRepeat: variable in group.data --><div>
                                     <label class="labelTitle ng-binding">@icon-font-path</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker' : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="icon-font-path" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$icon_font_path; ?>">
+                                        <input name="icon-font-path" type="text"  class=" form-control "  value="<?php 
+                                        if (empty($icon_font_path)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/icon-font-path:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$icon_font_path; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
-                                </div><div ng-repeat="variable in group.data" class="protected form-group ng-scope">
+                                </div><div>
                                     <label class="labelTitle ng-binding">@icon-font-name</label>                
                                     <div class="input {' ap-color-picker: variable.value': colorpicker(variable.type)}"  data-color-format="hex" ng-class="{
                                             'input - group color colorpicker'
                                             : colorpicker(variable.type)}" color-picker-apply="">
-                                        <input name="icon-font-name" type="text" data-ng-model="variable.value" class="lessVariable form-control ng-pristine ng-valid" ng-change="autoApplyLess()" value="<?php echo$icon_font_name; ?>">
+                                        <input name="icon-font-name" type="text"  class=" form-control "  value="<?php 
+                                         if (empty($icon_font_name)) {
+                                                  $file = fopen('reset.txt', "r");
+                                                  while (!feof($file)) {
+                                                      // check Grays
+
+                                                      preg_match("/icon-font-name:(.*)/", fgets($file), $css_string);
+                                                      $css_val = str_replace(';', '', $css_string[1]);
+                                                      echo$css_val;
+                                                  }
+                                                  fclose($file);
+                                              } else 
+                                                  echo$icon_font_name; ?>">
                                         <span class="input-group-addon hidden" ng-class="{
                                                 'hidden' : !colorpicker(variable.type)}"><i></i></span>
                                     </div>
@@ -9399,8 +11612,8 @@ fwrite($myLessfile, $lessVariable);
                             </div>
                         </div>
                     </section>
-                    
-                   
+
+
 
                 </div><span class="ng-scope">
 
@@ -9414,7 +11627,7 @@ fwrite($myLessfile, $lessVariable);
                                 </div>
                                 <div class="modal-body">
                                     <p>Add your less variables to Bootstrap Magic.</p>
-                                    <textarea class="form-control ng-pristine ng-valid" ng-model="importedVariables" rows="3" placeholder="Example @text-color : #242424;" style="height:400px"></textarea>
+                                    <textarea class="form-control " ng-model="importedVariables" rows="3" placeholder="Example @text-color : #242424;" style="height:400px"></textarea>
                                 </div>
                                 <div class="modal-footer">
                                     <button data-dismiss="modal" aria-hidden="true" class="btn btn-primary" ng-click="importLessVariables(importedVariables)">Import</button>
@@ -9469,5 +11682,7 @@ fwrite($myLessfile, $lessVariable);
         </script>
     </body>
 </html>
+
+
 
 
